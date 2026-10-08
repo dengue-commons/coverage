@@ -33,6 +33,15 @@ least 1% of the typed cases there.
   (`data/who_cases.LICENSE.txt`).
 - OpenDengue counts: CC BY 4.0, from OpenDengue; changes were made (aggregated by country and year).
 
+## Links and data files
+
+The page opens on a given year and country with `?year=2025&country=BRA` (ISO 3166-1 alpha-3).
+
+`data/panel.json` holds, per country and per Brazilian region: `n` name, `g` open sequences per year,
+`c` reported cases per year, `s` open sequences per year for DENV-1 to DENV-4. `data/who_cases.json`
+holds WHO cases per country for 2025 and 2026 (`c`, and `until`, the start of the last reported
+period). The CSV behind the "Download CSV" button is built from these files in the browser.
+
 ## Running locally
 
 ```bash

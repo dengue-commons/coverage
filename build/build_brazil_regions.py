@@ -13,8 +13,8 @@ spec = importlib.util.spec_from_file_location("geo", HERE.parent / "painel" / "m
 geo = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(geo)
 
-# IBGE region codes; names stay in Portuguese because the panel data key the regions by them
-NAMES = {"1": "Norte", "2": "Nordeste", "3": "Sudeste", "4": "Sul", "5": "Centro-Oeste"}
+# IBGE region codes
+NAMES = {"1": "North", "2": "Northeast", "3": "Southeast", "4": "South", "5": "Central-West"}
 
 screen = geo.Tela()
 fc = json.loads((HERE / "sources" / "ibge_brazil_regions_minimal.geojson").read_text())

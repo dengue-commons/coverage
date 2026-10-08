@@ -11,7 +11,7 @@ Rules:
 - a country-year can come in more than one period type (epiweek, isoweek, month); the type with most
   records is kept, and on a tie the one with the larger total, so that no week is counted twice;
 - only records with reported cases and a start date up to the query date enter;
-- `ate` is the start of the last reported period, so the page can say "up to when".
+- `until` is the start of the last reported period, so the page can say "up to when".
 """
 import argparse
 import datetime as dt
@@ -24,7 +24,7 @@ import pandas as pd
 
 HERE = pathlib.Path(__file__).resolve().parent
 URL = "https://xmart-api-public.who.int/ARBOV/V_DENGUE_GLOBAL_VALIDATED_PUBLIC"
-ANOS = (2025, 2026)
+YEARS = (2025, 2026)
 LOCAL_EXTRACTION = HERE.parent / "dados" / "oms_arbov" / "registros_20261007.tsv"
 
 
@@ -46,7 +46,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--offline", action="store_true")
     args = ap.parse_args()
-    t, acesso = read_local() if args.offline else read_api()
+    t, accessed = read_local() if args.offline else read_api()
 
     for c in ("ISO3", "YEAR", "START_DATE", "DATE_TYPE", "CASES"):
         if c not in t.columns:
@@ -55,35 +55,35 @@ def main() -> int:
     t["CASES"] = pd.to_numeric(t["CASES"], errors="coerce")
     t["YEAR"] = pd.to_numeric(t["YEAR"], errors="coerce")
     t["START_DATE"] = pd.to_datetime(t["START_DATE"], errors="coerce")
-    t = t[t["YEAR"].isin(ANOS) & t["CASES"].notna() & (t["START_DATE"] <= pd.Timestamp(acesso))]
+    t = t[t["YEAR"].isin(YEARS) & t["CASES"].notna() & (t["START_DATE"] <= pd.Timestamp(accessed))]
 
-    paises: dict[str, dict] = {}
-    for (iso, ano), g in t.groupby(["ISO3", "YEAR"]):
-        por_tipo = g.groupby("DATE_TYPE").agg(n=("CASES", "size"), tot=("CASES", "sum"))
-        tipo = por_tipo.sort_values(["n", "tot"], ascending=False).index[0]
-        h = g[g["DATE_TYPE"] == tipo]
-        paises.setdefault(iso, {})[str(int(ano))] = {
+    countries: dict[str, dict] = {}
+    for (iso, year), g in t.groupby(["ISO3", "YEAR"]):
+        by_type = g.groupby("DATE_TYPE").agg(n=("CASES", "size"), tot=("CASES", "sum"))
+        kind = by_type.sort_values(["n", "tot"], ascending=False).index[0]
+        h = g[g["DATE_TYPE"] == kind]
+        countries.setdefault(iso, {})[str(int(year))] = {
             "c": int(h["CASES"].sum()),
-            "ate": h["START_DATE"].max().date().isoformat(),
+            "until": h["START_DATE"].max().date().isoformat(),
         }
 
-    saida = {
-        "fonte": "WHO Global Dengue Surveillance, xMart public OData API, V_DENGUE_GLOBAL_VALIDATED_PUBLIC",
-        "acesso": acesso,
-        "anos": list(ANOS),
-        "licenca": "CC BY-NC-SA 3.0 IGO",
-        "atribuicao": (
+    out = {
+        "source": "WHO Global Dengue Surveillance, xMart public OData API, V_DENGUE_GLOBAL_VALIDATED_PUBLIC",
+        "accessed": accessed,
+        "years": list(YEARS),
+        "licence": "CC BY-NC-SA 3.0 IGO",
+        "attribution": (
             "Dengue cases 2025–2026: World Health Organization, Global Dengue Surveillance, "
-            f"accessed {acesso}. Licence: CC BY-NC-SA 3.0 IGO. This is an adaptation of an original "
+            f"accessed {accessed}. Licence: CC BY-NC-SA 3.0 IGO. This is an adaptation of an original "
             "work by WHO (cases summed by country and year). The views expressed in this adaptation "
             "are the sole responsibility of the authors and do not necessarily represent the views, "
             "decisions or policies of WHO."
         ),
-        "paises": paises,
+        "countries": countries,
     }
-    (HERE.parent / "data" / "who_cases.json").write_text(json.dumps(saida, ensure_ascii=False, separators=(",", ":")))
-    n = {a: sum(1 for p in paises.values() if str(a) in p) for a in ANOS}
-    print("ok", n, "acesso", acesso)
+    (HERE.parent / "data" / "who_cases.json").write_text(json.dumps(out, ensure_ascii=False, separators=(",", ":")))
+    n = {a: sum(1 for p in countries.values() if str(a) in p) for a in YEARS}
+    print("ok", n, "accessed", accessed)
     return 0
 
 

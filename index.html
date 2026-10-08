@@ -26,25 +26,25 @@ body { margin: 0; background: var(--bg); color: var(--ink);
   font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
 main { max-width: 1920px; margin: 0 auto; padding: 24px clamp(16px, 3vw, 48px) 40px; }
 
-.topo { padding-left: clamp(0px, 3vw, 64px); margin-bottom: 22px; }
-.marca { display: flex; gap: 16px; align-items: flex-start; max-width: 860px; }
-.marca svg { flex: none; width: 64px; height: 64px; color: var(--ink); }
+.top { padding-left: clamp(0px, 3vw, 64px); margin-bottom: 22px; }
+.brand { display: flex; gap: 16px; align-items: flex-start; max-width: 860px; }
+.brand svg { flex: none; width: 64px; height: 64px; color: var(--ink); }
 h1 { font-size: 30px; line-height: 1.15; margin: 2px 0 6px; letter-spacing: -0.015em; }
 .sub { color: var(--ink-2); margin: 0 0 8px; font-size: 17px; }
 .paper { font-size: 14px; color: var(--ink-2); margin: 0; padding-left: 10px; border-left: 3px solid var(--ok); }
 .paper .ref { color: var(--ink); }
-.fontes { font-size: 13px; color: var(--ink-3); text-align: right; margin-bottom: 18px; }
-.fontes .lista { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; margin-top: 6px; }
-.fontes a { display: inline-flex; flex-direction: column; align-items: flex-start; text-decoration: none; color: var(--ink);
+.sources { font-size: 13px; color: var(--ink-3); text-align: right; margin-bottom: 18px; }
+.sources .list { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; margin-top: 6px; }
+.sources a { display: inline-flex; flex-direction: column; align-items: flex-start; text-decoration: none; color: var(--ink);
   border: 1px solid var(--rule); border-radius: 8px; padding: 5px 9px; line-height: 1.2; }
-.fontes a b { font-size: 14px; font-weight: 650; letter-spacing: -0.01em; }
-.fontes a small { color: var(--ink-3); font-size: 11px; }
-.fontes a:hover { border-color: var(--ink-3); }
+.sources a b { font-size: 14px; font-weight: 650; letter-spacing: -0.01em; }
+.sources a small { color: var(--ink-3); font-size: 11px; }
+.sources a:hover { border-color: var(--ink-3); }
 
 .bar { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; margin-bottom: 18px; }
-.ano { display: flex; align-items: center; gap: 14px; flex: 1 1 360px; }
-.ano output { font-size: 34px; font-weight: 650; font-variant-numeric: tabular-nums; min-width: 2.6em; }
-.ano input { flex: 1; accent-color: var(--s3); }
+.year { display: flex; align-items: center; gap: 14px; flex: 1 1 360px; }
+.year output { font-size: 34px; font-weight: 650; font-variant-numeric: tabular-nums; min-width: 2.6em; }
+.year input { flex: 1; accent-color: var(--s3); }
 .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
 .seg button { border: 0; background: transparent; color: var(--ink-2); padding: 8px 14px; font: inherit; cursor: pointer; }
 .seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
@@ -52,34 +52,33 @@ h1 { font-size: 30px; line-height: 1.15; margin: 2px 0 6px; letter-spacing: -0.0
 .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 6px; }
 .tile .v { font-size: 40px; line-height: 1.1; font-weight: 650; font-variant-numeric: tabular-nums; }
 .tile .l { color: var(--ink-2); font-size: 15px; }
-.nota { color: var(--ink-2); font-size: 14px; min-height: 1.5em; margin: 4px 0 8px; }
+.note { color: var(--ink-2); font-size: 14px; min-height: 1.5em; margin: 4px 0 8px; }
 
-.corpo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
-@media (min-width: 1100px) { .corpo { grid-template-columns: minmax(0, 2.1fr) minmax(380px, 1fr); } }
-@media (min-width: 1700px) { .corpo { grid-template-columns: minmax(0, 2.8fr) minmax(420px, 1fr); } }
+.layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
+@media (min-width: 1100px) { .layout { grid-template-columns: minmax(0, 2.1fr) minmax(380px, 1fr); } }
+@media (min-width: 1700px) { .layout { grid-template-columns: minmax(0, 2.8fr) minmax(420px, 1fr); } }
 .card { background: var(--panel); border-radius: 14px; padding: 18px 22px 14px; }
 .card svg { width: 100%; height: auto; display: block; overflow: visible; }
 .card svg text { fill: var(--ink-3); font-size: 12px; }
 .card .leg { font-size: 13px; gap: 4px 12px; margin-top: 4px; }
-.porque { font-size: 14px; color: var(--ink-2); margin: 8px 0 0; max-width: 75ch; }
-.porque summary { cursor: pointer; color: var(--ink); width: max-content; }
-.porque p { margin: 6px 0 0; }
-svg.mapa { width: 100%; height: auto; display: block; }
-svg.mapa path, svg.mapa circle { stroke: var(--stroke); stroke-width: 0.4; cursor: pointer; }
-svg.mapa .sel { stroke: var(--ink-2); stroke-width: 0.7; }
-svg.mapa path.macro-br { stroke-width: 0.6; }
+.why { font-size: 14px; color: var(--ink-2); margin: 8px 0 0; max-width: 75ch; }
+.why summary { cursor: pointer; color: var(--ink); width: max-content; }
+.why p { margin: 6px 0 0; }
+svg.map { width: 100%; height: auto; display: block; }
+svg.map path, svg.map circle { stroke: var(--stroke); stroke-width: 0.4; cursor: pointer; }
+svg.map .sel { stroke: var(--ink-2); stroke-width: 0.7; }
+svg.map path.br-region { stroke-width: 0.6; }
 .leg { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--ink-2); margin-top: 8px; }
 .leg span { display: inline-flex; align-items: center; gap: 6px; }
 .leg i { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
-.leg i.tr { height: 0; border-top: 2px dashed var(--target); border-radius: 0; width: 18px; }
 
 .card h2 { font-size: 28px; margin: 0 0 4px; letter-spacing: -0.01em; }
 .card .sec { border-top: 1px solid var(--rule); margin-top: 12px; }
-.fatos { display: flex; gap: 28px; margin: 8px 0 4px; font-variant-numeric: tabular-nums; }
-.fatos b { display: block; font-size: 30px; font-weight: 650; line-height: 1.15; }
-.fatos span { color: var(--ink-2); font-size: 14px; }
-.alvo { font-size: 15px; margin: 8px 0 0; display: inline-flex; gap: 8px; align-items: center; }
-.alvo i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.facts { display: flex; gap: 28px; margin: 8px 0 4px; font-variant-numeric: tabular-nums; }
+.facts b { display: block; font-size: 30px; font-weight: 650; line-height: 1.15; }
+.facts span { color: var(--ink-2); font-size: 14px; }
+.status { font-size: 15px; margin: 8px 0 0; display: inline-flex; gap: 8px; align-items: center; }
+.status i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 .card h3 { font-size: 15px; font-weight: 600; margin: 10px 0 4px; }
 .card h3 small { font-weight: 400; color: var(--ink-3); }
 .chips { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; margin-top: 6px; }
@@ -89,42 +88,33 @@ svg.mapa path.macro-br { stroke-width: 0.6; }
 .mtx { display: grid; grid-template-columns: max-content repeat(4, minmax(0, 1fr)) max-content; gap: 3px 4px; align-items: center; font-size: 13px; font-variant-numeric: tabular-nums; margin-top: 6px; }
 .mtx .hd { color: var(--ink-3); font-size: 11px; text-align: center; white-space: nowrap; }
 .mtx .nm { color: var(--ink-2); padding-right: 6px; }
-.mtx .cel { text-align: center; border-radius: 4px; padding: 3px 0; }
-.mtx .cel.off { color: var(--ink-3); }
+.mtx .cell { text-align: center; border-radius: 4px; padding: 3px 0; }
+.mtx .cell.off { color: var(--ink-3); }
 .mtx .n { color: var(--ink-3); text-align: right; padding-left: 6px; }
-.rodape { font-size: 12px; color: var(--ink-3); margin: 6px 0 0; }
-.macro { display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content; gap: 6px 10px; align-items: center; font-size: 14px; font-variant-numeric: tabular-nums; }
-.macro .nm { color: var(--ink-2); }
-.macro .tr { position: relative; height: 14px; }
-.macro .tr span { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 0 3px 3px 0; }
-.macro .tr em { position: absolute; top: -3px; bottom: -3px; border-left: 2px dashed var(--target); }
-.macro .n { text-align: right; }
-.macro .n small { color: var(--ink-3); }
-
+.footnote { font-size: 12px; color: var(--ink-3); margin: 6px 0 0; }
 
 .tt { position: fixed; pointer-events: none; background: var(--ink); color: var(--bg);
   padding: 7px 10px; border-radius: 6px; font-size: 14px; line-height: 1.4; z-index: 9; max-width: 260px; }
 footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--rule); color: var(--ink-3); font-size: 13px;
   display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; align-items: center; }
-.credito { flex-basis: 100%; order: 3; }
-.baixar { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 13px; color: var(--ink-2); }
-.baixar button { flex: none; font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 7px 14px; cursor: pointer; }
-.baixar button:hover { border-color: var(--ink-3); }
-footer button { font: inherit; color: var(--ink); background: transparent; border: 1px solid var(--rule); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+.credit { flex-basis: 100%; order: 3; }
+.download { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 13px; color: var(--ink-2); }
+.download button { flex: none; font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 7px 14px; cursor: pointer; }
+.download button:hover { border-color: var(--ink-3); }
 @media (max-width: 640px) {
-  h1 { font-size: 24px; } .marca svg { width: 44px; height: 44px; }
+  h1 { font-size: 24px; } .brand svg { width: 44px; height: 44px; }
   .tiles { gap: 8px; } .tile .v { font-size: 18px; } .tile .l { font-size: 12px; }
-  .fontes { text-align: left; } .fontes .lista { justify-content: flex-start; }
+  .sources { text-align: left; } .sources .list { justify-content: flex-start; }
 }
 </style>
 </head>
 <body>
 <main>
 
-  <div class="corpo">
-  <div class="esq">
-  <header class="topo">
-    <div class="marca">
+  <div class="layout">
+  <div class="left">
+  <header class="top">
+    <div class="brand">
       <svg viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
         <ellipse cx="22" cy="21" rx="15" ry="5.5" transform="rotate(-28 22 21)" fill="var(--s1)" stroke="var(--s3)" stroke-width="1.2" opacity="0.9"/>
         <ellipse cx="30" cy="17" rx="13" ry="4.5" transform="rotate(-62 30 17)" fill="var(--s1)" stroke="var(--s3)" stroke-width="1.2" opacity="0.7"/>
@@ -141,51 +131,51 @@ footer button { font: inherit; color: var(--ink); background: transparent; borde
         <h1>Dengue genomic surveillance coverage</h1>
         <p class="sub">Open dengue sequences per country and year, against a minimum of 59 sequences a year for each circulating serotype, enough to detect a lineage at 5%.</p>
         <p class="paper">Methods, the derivation of the target and the full data are in <span class="ref">Bermann T, et al. Open genomic surveillance of dengue virus against reported and modeled burden, worldwide, 2001–2026. In preparation.</span></p>
-        <details class="porque"><summary>Why 59?</summary><p>59 is the smallest random sample that contains at least one sequence from a lineage carried by 5% of infections, with 95% confidence (1 − 0.95<sup>59</sup> ≥ 0.95). It is a floor, not a goal. Each serotype in circulation needs its own 59, so a country is colored by its least-sequenced serotype. A serotype counts as circulating when it makes up at least 10% of the open sequences that year; in Brazil, when SINAN reports cases of it in the region. Brazil is shown by region because a national total can hide regions with almost no sequences. Open sequences are public dengue virus sequences of at least 505 bp in Pathoplexus (about 5% of the genome), the genome coverage recommended for lineage assignment.</p></details>
+        <details class="why"><summary>Why 59?</summary><p>59 is the smallest random sample that contains at least one sequence from a lineage carried by 5% of infections, with 95% confidence (1 − 0.95<sup>59</sup> ≥ 0.95). It is a floor, not a goal. Each serotype in circulation needs its own 59, so a country is colored by its least-sequenced serotype. A serotype counts as circulating when it makes up at least 10% of the open sequences that year; in Brazil, when SINAN reports cases of it in the region. Brazil is shown by region because a national total can hide regions with almost no sequences. Open sequences are public dengue virus sequences of at least 505 bp in Pathoplexus (about 5% of the genome), the genome coverage recommended for lineage assignment.</p></details>
       </div>
     </div>
   </header>
   <div class="bar">
-    <div class="ano">
-      <output id="anoTxt"></output>
-      <input id="ano" type="range" aria-label="Year">
+    <div class="year">
+      <output id="yearLabel"></output>
+      <input id="year" type="range" aria-label="Year">
     </div>
     <div class="seg" role="group" aria-label="Map shows">
-      <button data-modo="g" aria-pressed="true">Sequences</button>
-      <button data-modo="r" aria-pressed="false">Per 10,000 cases</button>
+      <button data-mode="seq" aria-pressed="true">Sequences</button>
+      <button data-mode="rate" aria-pressed="false">Per 10,000 cases</button>
     </div>
   </div>
 
   <div class="tiles">
-    <div class="tile"><div class="v" id="tG"></div><div class="l">open sequences</div></div>
-    <div class="tile"><div class="v" id="tC"></div><div class="l">reported cases</div></div>
-    <div class="tile"><div class="v" id="tM"></div><div class="l">countries with 59+ for every serotype</div></div>
+    <div class="tile"><div class="v" id="tSeq"></div><div class="l">open sequences</div></div>
+    <div class="tile"><div class="v" id="tCases"></div><div class="l">reported cases</div></div>
+    <div class="tile"><div class="v" id="tMet"></div><div class="l">countries with 59+ for every serotype</div></div>
   </div>
-  <p class="nota" id="nota"></p>
-  <svg class="mapa" id="mapa" role="img" aria-label="World map of open dengue sequences"></svg>
+  <p class="note" id="note"></p>
+  <svg class="map" id="map" role="img" aria-label="World map of open dengue sequences"></svg>
   <div class="leg" id="leg"></div>
   </div>
-  <div class="dir">
-    <div class="fontes">
+  <div class="right">
+    <div class="sources">
       Data from
-      <div class="lista">
+      <div class="list">
         <a href="https://pathoplexus.org" target="_blank" rel="noopener"><b>Pathoplexus</b><small>open sequences</small></a>
         <a href="https://opendengue.org" target="_blank" rel="noopener"><b>OpenDengue</b><small>reported cases</small></a>
         <a href="https://worldhealthorg.shinyapps.io/dengue_global/" target="_blank" rel="noopener"><b>WHO</b><small>cases 2025–2026</small></a>
         <a href="https://portalsinan.saude.gov.br" target="_blank" rel="noopener"><b>SINAN</b><small>cases, Brazil</small></a>
       </div>
     </div>
-    <div class="baixar">
+    <div class="download">
       <button id="csv">Download CSV</button>
-        <span>All countries, 2001–2026: open sequences by serotype, reported cases and their source.</span>
+      <span>All countries, 2001–2026: open sequences by serotype, reported cases and their source.</span>
     </div>
     <section class="card" id="card" aria-live="polite"></section>
   </div>
   </div>
 
   <footer>
-    <span id="fonte"></span>
-    <span id="credito" class="credito"></span>
+    <span id="sourceLine"></span>
+    <span id="credit" class="credit"></span>
   </footer>
 </main>
 <div class="tt" id="tt" hidden></div>
@@ -193,103 +183,106 @@ footer button { font: inherit; color: var(--ink); background: transparent; borde
 <script>
 const $ = (id) => document.getElementById(id);
 const fmt = (n) => n == null ? "–" : Math.round(n).toLocaleString("en-US");
-const curto = (n) => n >= 1e6 ? +(n / 1e6).toFixed(1) + "M" : n >= 1e3 ? +(n / 1e3).toFixed(1) + "k" : String(n);
+const short = (n) => n >= 1e6 ? +(n / 1e6).toFixed(1) + "M" : n >= 1e3 ? +(n / 1e3).toFixed(1) + "k" : String(n);
 const NS = "http://www.w3.org/2000/svg";
-const MACRO_EN = { "Norte": "North", "Nordeste": "Northeast", "Centro-Oeste": "Central-West", "Sudeste": "Southeast", "Sul": "South" };
-const CORES_SORO = ["var(--d1)", "var(--d2)", "var(--d3)", "var(--d4)"];
-const st = { ano: 2024, modo: "g", sel: "BRA", clicou: false };
-let D, G, BR, OMS, ANOS, dengue;
-const MESES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const mesAno = (iso) => { const [a, m] = iso.split("-"); return `${MESES[+m - 1]} ${a}`; };
+const SERO_COLORS = ["var(--d1)", "var(--d2)", "var(--d3)", "var(--d4)"];
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const monthYear = (iso) => { const [y, m] = iso.split("-"); return `${MONTHS[+m - 1]} ${y}`; };
+const state = { year: 2024, mode: "seq", sel: "BRA", clicked: false };
+// D: panel data; G: map geometry; BR: Brazilian regions; WHO: WHO case layer; YEARS: year axis.
+// Per country and per region: n = name, g = open sequences, c = reported cases, s = sequences by serotype.
+let D, G, BR, WHO, YEARS, dengue;
+
 // Reported cases: OpenDengue up to its last release; WHO for the years after it (separate layer, CC BY-NC-SA 3.0 IGO).
-function casos(iso, i) {
-  const p = D.paises[iso], a = ANOS[i];
-  if (p && p.c && p.c[i]) return { v: p.c[i], fonte: "OpenDengue" };
-  const o = OMS && OMS.anos.includes(a) && OMS.paises[iso] && OMS.paises[iso][a];
-  if (o && o.c) return { v: o.c, fonte: "WHO", ate: o.ate, parcial: a === ANOS[ANOS.length - 1] };
+function caseCount(iso, i) {
+  const p = D.countries[iso], y = YEARS[i];
+  if (p && p.c && p.c[i]) return { v: p.c[i], source: "OpenDengue" };
+  const w = WHO && WHO.years.includes(y) && WHO.countries[iso] && WHO.countries[iso][y];
+  if (w && w.c) return { v: w.c, source: "WHO", until: w.until, partial: y === YEARS[YEARS.length - 1] };
   return { v: null };
 }
 
-const BINS_G = [
-  { k: "zero", lab: "0", t: (v) => v === 0 },
-  { k: "s1", lab: "1–9", t: (v) => v < 10 },
-  { k: "s2", lab: "10–29", t: (v) => v < 30 },
-  { k: "s3", lab: "30–58", t: (v) => v < 59 },
-  { k: "ok", lab: "59+ for every serotype", t: () => true },
+const BINS_SEQ = [
+  { k: "zero", label: "0", test: (v) => v === 0 },
+  { k: "s1", label: "1–9", test: (v) => v < 10 },
+  { k: "s2", label: "10–29", test: (v) => v < 30 },
+  { k: "s3", label: "30–58", test: (v) => v < 59 },
+  { k: "ok", label: "59+ for every serotype", test: () => true },
 ];
-const BINS_R = [
-  { k: "zero", lab: "0", t: (v) => v === 0 },
-  { k: "s1", lab: "< 1", t: (v) => v < 1 },
-  { k: "s2", lab: "1–9", t: (v) => v < 10 },
-  { k: "s3", lab: "10–49", t: (v) => v < 50 },
-  { k: "s4", lab: "50+ (0.5% of cases)", t: () => true },
+const BINS_RATE = [
+  { k: "zero", label: "0", test: (v) => v === 0 },
+  { k: "s1", label: "< 1", test: (v) => v < 1 },
+  { k: "s2", label: "1–9", test: (v) => v < 10 },
+  { k: "s3", label: "10–49", test: (v) => v < 50 },
+  { k: "s4", label: "50+ (0.5% of cases)", test: () => true },
 ];
-const cor = (k) => `var(--${k})`;
-const corBin = (bins, v) => cor(bins.find((b) => b.t(v)).k);
+const color = (k) => `var(--${k})`;
+const binColor = (bins, v) => color(bins.find((b) => b.test(v)).k);
 
 // A serotype counts as circulating from the sequences alone when it is at least 10% of the open sequences
 // of that place and year, so that a handful of travel-associated sequences does not create a stratum.
-const PARTE = 0.10;
+const SHARE = 0.10;
+const sinanYear = (bi) => D.brazil.circ && D.brazil.circ.North[0][bi] != null;
 // One stratum per circulating serotype. Brazil uses the SINAN mask by region when it exists.
-function estratosMacro(nome, bi) {
-  const m = D.brasil.macro[nome], circ = D.brasil.circ && D.brasil.circ[nome];
-  return m.s.map((r, k) => ({ k, g: r[bi], on: circ && circ[k][bi] != null ? circ[k][bi] : r[bi] > 0 && r[bi] >= PARTE * m.g[bi] })).filter((e) => e.on);
+function regionStrata(name, bi) {
+  const r = D.brazil.regions[name], circ = D.brazil.circ && D.brazil.circ[name];
+  return r.s.map((row, k) => ({ k, g: row[bi], on: circ && circ[k][bi] != null ? circ[k][bi] : row[bi] > 0 && row[bi] >= SHARE * r.g[bi] })).filter((e) => e.on);
 }
-function estratosPais(iso, i) {
-  const p = D.paises[iso];
+function countryStrata(iso, i) {
+  const p = D.countries[iso];
   if (!p.s) return [];
-  const bi = D.brasil.anos.indexOf(ANOS[i]);
-  if (iso === "BRA" && D.brasil.circ && bi >= 0 && D.brasil.circ.Norte[0][bi] != null) {
-    const on = [0, 1, 2, 3].map((k) => Object.keys(D.brasil.macro).some((n) => D.brasil.circ[n][k][bi]));
-    return p.s.map((r, k) => ({ k, g: r[i], on: on[k] || r[i] > 0 })).filter((e) => e.on);
+  const bi = D.brazil.years.indexOf(YEARS[i]);
+  if (iso === "BRA" && bi >= 0 && sinanYear(bi)) {
+    const on = [0, 1, 2, 3].map((k) => Object.keys(D.brazil.regions).some((n) => D.brazil.circ[n][k][bi]));
+    return p.s.map((row, k) => ({ k, g: row[i], on: on[k] || row[i] > 0 })).filter((e) => e.on);
   }
-  return p.s.map((r, k) => ({ k, g: r[i] })).filter((e) => e.g > 0 && e.g >= PARTE * p.g[i]);
+  return p.s.map((row, k) => ({ k, g: row[i] })).filter((e) => e.g > 0 && e.g >= SHARE * p.g[i]);
 }
-const fraco = (es) => es.length ? Math.min(...es.map((e) => e.g)) : 0;
+const weakest = (strata) => strata.length ? Math.min(...strata.map((e) => e.g)) : 0;
 
-function valor(iso, i) {
-  const p = D.paises[iso];
+function value(iso, i) {
+  const p = D.countries[iso];
   if (!p) return null;
   const g = p.g[i];
-  if (st.modo === "g") return dengue.has(iso) || g > 0 ? fraco(estratosPais(iso, i)) : null;
-  const c = casos(iso, i).v;
+  if (state.mode === "seq") return dengue.has(iso) || g > 0 ? weakest(countryStrata(iso, i)) : null;
+  const c = caseCount(iso, i).v;
   return c ? (g / c) * 1e4 : null;
 }
 
-function desenhaMapa() {
-  const svg = $("mapa");
+function drawMap() {
+  const svg = $("map");
   svg.setAttribute("viewBox", G.viewBox.join(" "));
   svg.replaceChildren();
-  const i = ANOS.indexOf(st.ano);
-  const bins = st.modo === "g" ? BINS_G : BINS_R;
+  const i = YEARS.indexOf(state.year);
+  const bins = state.mode === "seq" ? BINS_SEQ : BINS_RATE;
   const add = (el, iso) => {
-    const v = valor(iso, i);
+    const v = value(iso, i);
     el.dataset.iso = iso;
-    el.setAttribute("fill", v == null ? cor("land-none") : corBin(bins, v));
-    if (st.clicou && iso === st.sel) el.classList.add("sel");
+    el.setAttribute("fill", v == null ? color("land-none") : binColor(bins, v));
+    if (state.clicked && iso === state.sel) el.classList.add("sel");
     svg.appendChild(el);
   };
-  for (const [iso, ds] of Object.entries(G.caminhos)) {
+  for (const [iso, ds] of Object.entries(G.paths)) {
     for (const d of ds) { const p = document.createElementNS(NS, "path"); p.setAttribute("d", d); add(p, iso); }
   }
-  for (const [iso, [x, y]] of Object.entries(G.pontos)) {
-    if (G.caminhos[iso] || !D.paises[iso]) continue;
+  for (const [iso, [x, y]] of Object.entries(G.points)) {
+    if (G.paths[iso] || !D.countries[iso]) continue;
     const c = document.createElementNS(NS, "circle");
     c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", 2.6);
     add(c, iso);
   }
   // Brazil drawn by macroregion, each one against the same minimum
-  const bi = D.brasil.anos.indexOf(st.ano);
+  const bi = D.brazil.years.indexOf(state.year);
   if (bi >= 0) {
-    for (const [nome, ds] of Object.entries(BR)) {
-      const m = D.brasil.macro[nome];
-      const v = st.modo === "g" ? fraco(estratosMacro(nome, bi)) : (m.c[bi] ? m.g[bi] / m.c[bi] * 1e4 : null);
+    for (const [name, ds] of Object.entries(BR)) {
+      const r = D.brazil.regions[name];
+      const v = state.mode === "seq" ? weakest(regionStrata(name, bi)) : (r.c[bi] ? r.g[bi] / r.c[bi] * 1e4 : null);
       for (const d of ds) {
         const p = document.createElementNS(NS, "path");
         p.setAttribute("d", d);
-        p.dataset.iso = "BRA"; p.dataset.macro = nome;
-        p.setAttribute("fill", v == null ? cor("land-none") : corBin(bins, v));
-        p.setAttribute("class", "macro-br");
+        p.dataset.iso = "BRA"; p.dataset.region = name;
+        p.setAttribute("fill", v == null ? color("land-none") : binColor(bins, v));
+        p.setAttribute("class", "br-region");
         svg.appendChild(p);
       }
     }
@@ -297,192 +290,193 @@ function desenhaMapa() {
   svg.querySelectorAll(".sel").forEach((el) => svg.appendChild(el));
 }
 
-function desenhaLegenda() {
-  const bins = st.modo === "g" ? BINS_G : BINS_R;
-  const sem = st.modo === "g" ? "no dengue data" : "no case data this year";
-  $("leg").innerHTML = (st.modo === "g" ? `<span>Least-sequenced serotype:</span>` : `<span>Sequences per 10,000 cases:</span>`) + bins.map((b) => `<span><i style="background:${cor(b.k)}"></i>${b.lab}</span>`).join("")
-    + `<span><i style="background:var(--land-none)"></i>${sem}</span>`
-    + (D.brasil.anos.includes(st.ano) ? `<span>Brazil is shown by macroregion</span>` : "");
+function drawLegend() {
+  const bins = state.mode === "seq" ? BINS_SEQ : BINS_RATE;
+  const none = state.mode === "seq" ? "no dengue data" : "no case data this year";
+  $("leg").innerHTML = (state.mode === "seq" ? `<span>Least-sequenced serotype:</span>` : `<span>Sequences per 10,000 cases:</span>`)
+    + bins.map((b) => `<span><i style="background:${color(b.k)}"></i>${b.label}</span>`).join("")
+    + `<span><i style="background:var(--land-none)"></i>${none}</span>`
+    + (D.brazil.years.includes(state.year) ? `<span>Brazil is shown by macroregion</span>` : "");
 }
 
-function desenhaResumo() {
-  const i = ANOS.indexOf(st.ano);
-  let g = 0, c = 0, m = 0;
-  for (const [iso, p] of Object.entries(D.paises)) {
+function drawSummary() {
+  const i = YEARS.indexOf(state.year);
+  let g = 0, c = 0, met = 0;
+  for (const [iso, p] of Object.entries(D.countries)) {
     g += p.g[i];
-    c += casos(iso, i).v || 0;
-    const es = estratosPais(iso, i);
-    if (es.length && fraco(es) >= D.alvo) m++;
+    c += caseCount(iso, i).v || 0;
+    const strata = countryStrata(iso, i);
+    if (strata.length && weakest(strata) >= D.target) met++;
   }
-  $("tG").textContent = fmt(g);
-  $("tC").textContent = c ? fmt(c) : "no case data yet";
-  const anoOMS = OMS && OMS.anos.includes(st.ano);
-  $("tC").nextElementSibling.textContent = anoOMS ? (st.ano === ANOS[ANOS.length - 1] ? "reported cases, year to date (WHO)" : "reported cases (WHO)") : "reported cases";
-  $("tC").style.fontSize = c ? "" : "20px";
-  $("tM").textContent = `${fmt(m)} of ${fmt(dengue.size)}`;
-  const recente = st.ano >= ANOS[ANOS.length - 1] - 1;
-  const semCaso = st.modo === "r" && st.ano > 2024 && !OMS;
-  $("nota").textContent = semCaso ? "Reported-case data end in 2024; switch to Sequences for later years."
-    : recente ? "Recent years are still filling in: most sequences reach public databases years after collection." : "";
+  $("tSeq").textContent = fmt(g);
+  $("tCases").textContent = c ? fmt(c) : "no case data yet";
+  const whoYear = WHO && WHO.years.includes(state.year);
+  $("tCases").nextElementSibling.textContent = whoYear ? (state.year === YEARS[YEARS.length - 1] ? "reported cases, year to date (WHO)" : "reported cases (WHO)") : "reported cases";
+  $("tCases").style.fontSize = c ? "" : "20px";
+  $("tMet").textContent = `${fmt(met)} of ${fmt(dengue.size)}`;
+  const recent = state.year >= YEARS[YEARS.length - 1] - 1;
+  const noCases = state.mode === "rate" && state.year > 2024 && !WHO;
+  $("note").textContent = noCases ? "Reported-case data end in 2024; switch to Sequences for later years."
+    : recent ? "Recent years are still filling in: most sequences reach public databases years after collection." : "";
 }
 
-function passo(max, alvoN = 4) {
-  const bruto = max / alvoN, e = 10 ** Math.floor(Math.log10(bruto));
-  return [1, 2, 2.5, 5, 10].map((k) => k * e).find((s) => s >= bruto);
+function niceStep(max, ticks = 4) {
+  const raw = max / ticks, e = 10 ** Math.floor(Math.log10(raw));
+  return [1, 2, 2.5, 5, 10].map((k) => k * e).find((s) => s >= raw);
 }
 
 // Stacked bars over the years, with gridlines at round values and the selected year marked on the axis.
-function barras(serie, { alvo, cores, rotulo }) {
+function bars(series, { target, colors, label }) {
   const W = Math.max(280, Math.round($("card").clientWidth - 44)), H = 112, m = { l: 44, r: 8, t: 16, b: 26 };
-  const tot = ANOS.map((_, j) => serie.reduce((s, r) => s + (r[j] || 0), 0));
-  const bruto = Math.max(alvo ? alvo * 1.25 : 1, ...tot);
-  const ps = passo(bruto), max = Math.ceil(bruto / ps) * ps;
-  const bw = (W - m.l - m.r) / ANOS.length;
+  const tot = YEARS.map((_, j) => series.reduce((s, r) => s + (r[j] || 0), 0));
+  const raw = Math.max(target ? target * 1.25 : 1, ...tot);
+  const step = niceStep(raw), max = Math.ceil(raw / step) * step;
+  const bw = (W - m.l - m.r) / YEARS.length;
   const y = (v) => H - m.b - (v / max) * (H - m.t - m.b);
-  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${rotulo}">`;
-  for (let v = 0; v <= max + 1e-9; v += ps) {
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${label}">`;
+  for (let v = 0; v <= max + 1e-9; v += step) {
     s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/>`;
-    s += `<text x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${curto(v)}</text>`;
+    s += `<text x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${short(v)}</text>`;
   }
-  ANOS.forEach((a, j) => {
+  YEARS.forEach((yr, j) => {
     let acc = 0;
     const x = m.l + j * bw + 1;
-    serie.forEach((r, k) => {
+    series.forEach((r, k) => {
       const v = r[j] || 0; if (!v) return;
       const y1 = y(acc + v), y0 = y(acc);
-      s += `<rect x="${x}" y="${y1}" width="${Math.max(bw - 2, 1)}" height="${Math.max(y0 - y1, 1)}" fill="${cores[k]}" opacity="${a === st.ano ? 1 : 0.8}"/>`;
+      s += `<rect x="${x}" y="${y1}" width="${Math.max(bw - 2, 1)}" height="${Math.max(y0 - y1, 1)}" fill="${colors[k]}" opacity="${yr === state.year ? 1 : 0.8}"/>`;
       acc += v;
     });
-    s += `<rect x="${x - 1}" y="${m.t}" width="${bw}" height="${H - m.t - m.b}" fill="transparent"><title>${a}: ${fmt(tot[j])}</title></rect>`;
+    s += `<rect x="${x - 1}" y="${m.t}" width="${bw}" height="${H - m.t - m.b}" fill="transparent"><title>${yr}: ${fmt(tot[j])}</title></rect>`;
   });
-  if (alvo) s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(alvo)}" y2="${y(alvo)}" stroke="var(--target)" stroke-dasharray="4 3" stroke-width="1.2"/><text x="${m.l + 4}" y="${y(alvo) - 5}" style="fill:var(--ink)">minimum of ${alvo}</text>`;
-  const ja = ANOS.indexOf(st.ano);
-  [2001, 2005, 2010, 2015, 2020, 2025].forEach((a) => {
-    const j = ANOS.indexOf(a); if (j < 0 || Math.abs(j - ja) < 2) return;
-    s += `<text x="${m.l + j * bw + bw / 2}" y="${H - 6}" text-anchor="middle">${a}</text>`;
+  if (target) s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(target)}" y2="${y(target)}" stroke="var(--target)" stroke-dasharray="4 3" stroke-width="1.2"/><text x="${m.l + 4}" y="${y(target) - 5}" style="fill:var(--ink)">minimum of ${target}</text>`;
+  const js = YEARS.indexOf(state.year);
+  [2001, 2005, 2010, 2015, 2020, 2025].forEach((yr) => {
+    const j = YEARS.indexOf(yr); if (j < 0 || Math.abs(j - js) < 2) return;
+    s += `<text x="${m.l + j * bw + bw / 2}" y="${H - 6}" text-anchor="middle">${yr}</text>`;
   });
-  if (ja >= 0) s += `<text x="${m.l + ja * bw + bw / 2}" y="${H - 6}" text-anchor="middle" style="fill:var(--ink);font-weight:650">${st.ano}</text>`
-    + `<path d="M${m.l + ja * bw + bw / 2 - 4} ${H - m.b + 7} l4 -5 l4 5z" fill="var(--ink)"/>`;
+  if (js >= 0) s += `<text x="${m.l + js * bw + bw / 2}" y="${H - 6}" text-anchor="middle" style="fill:var(--ink);font-weight:650">${state.year}</text>`
+    + `<path d="M${m.l + js * bw + bw / 2 - 4} ${H - m.b + 7} l4 -5 l4 5z" fill="var(--ink)"/>`;
   return s + "</svg>";
 }
 
 // Brazil after the OpenDengue release: SINAN probable cases, summed over the regions.
-function casosBR(i) {
-  const bi = D.brasil.anos.indexOf(ANOS[i]);
-  return bi < 0 ? null : Object.values(D.brasil.macro).reduce((s, m) => s + (m.c[bi] || 0), 0) || null;
+function brazilCases(i) {
+  const bi = D.brazil.years.indexOf(YEARS[i]);
+  return bi < 0 ? null : Object.values(D.brazil.regions).reduce((s, r) => s + (r.c[bi] || 0), 0) || null;
 }
-function desenhaCard() {
-  const iso = st.sel, p = D.paises[iso], i = ANOS.indexOf(st.ano);
+
+function drawCard() {
+  const iso = state.sel, p = D.countries[iso], i = YEARS.indexOf(state.year);
   const el = $("card");
   if (!p) { el.innerHTML = `<p>Select a country on the map.</p>`; return; }
   const g = p.g[i];
-  const cc = casos(iso, i);
-  let c = cc.v, cRot = cc.fonte === "WHO" ? (cc.parcial ? `reported cases to ${mesAno(cc.ate)} (WHO)` : "reported cases (WHO)") : "reported cases";
-  if (iso === "BRA" && !(p.c && p.c[i]) && casosBR(i)) { c = casosBR(i); cRot = ANOS[i] === ANOS[ANOS.length - 1] ? "SINAN probable cases, year to date" : "SINAN probable cases"; }
-  const es = estratosPais(iso, i), ok = es.filter((e) => e.g >= D.alvo).length;
-  let h = `<h2>${p.n}, ${st.ano}</h2>`
-    + `<div class="fatos"><div><b>${fmt(g)}</b><span>open sequences</span></div><div><b>${c ? fmt(c) : "–"}</b><span>${c ? cRot : "no open case data yet"}</span></div></div>`
-    + (es.length ? `<p class="alvo">${ok} of ${es.length} circulating serotype${es.length > 1 ? "s" : ""} at the minimum of ${D.alvo}</p><div class="chips">`
-      + es.map((e) => `<span><i style="background:${corBin(BINS_G, e.g)}"></i>${D.sorotipos[e.k]} <b>${fmt(e.g)}</b></span>`).join("") + `</div>`
-      : `<p class="alvo"><i style="background:var(--zero)"></i>No open sequence this year</p>`);
+  const cc = caseCount(iso, i);
+  let c = cc.v, cLabel = cc.source === "WHO" ? (cc.partial ? `reported cases to ${monthYear(cc.until)} (WHO)` : "reported cases (WHO)") : "reported cases";
+  if (iso === "BRA" && !(p.c && p.c[i]) && brazilCases(i)) { c = brazilCases(i); cLabel = YEARS[i] === YEARS[YEARS.length - 1] ? "SINAN probable cases, year to date" : "SINAN probable cases"; }
+  const strata = countryStrata(iso, i), ok = strata.filter((e) => e.g >= D.target).length;
+  let h = `<h2>${p.n}, ${state.year}</h2>`
+    + `<div class="facts"><div><b>${fmt(g)}</b><span>open sequences</span></div><div><b>${c ? fmt(c) : "–"}</b><span>${c ? cLabel : "no open case data yet"}</span></div></div>`
+    + (strata.length ? `<p class="status">${ok} of ${strata.length} circulating serotype${strata.length > 1 ? "s" : ""} at the minimum of ${D.target}</p><div class="chips">`
+      + strata.map((e) => `<span><i style="background:${binColor(BINS_SEQ, e.g)}"></i>${D.serotypes[e.k]} <b>${fmt(e.g)}</b></span>`).join("") + `</div>`
+      : `<p class="status"><i style="background:var(--zero)"></i>No open sequence this year</p>`);
   if (iso === "BRA") {
-    const bi = D.brasil.anos.indexOf(st.ano);
+    const bi = D.brazil.years.indexOf(state.year);
     if (bi >= 0) {
-      let tot = 0, bate = 0, tab = "";
-      for (const [nome, m] of Object.entries(D.brasil.macro)) {
-        const ems = estratosMacro(nome, bi), on = new Map(ems.map((e) => [e.k, e.g]));
-        tab += `<span class="nm">${MACRO_EN[nome]}</span>` + [0, 1, 2, 3].map((k) => on.has(k)
-          ? `<span class="cel" style="background:${corBin(BINS_G, on.get(k))};color:${on.get(k) >= 30 && on.get(k) < 59 ? "#fff" : "var(--ink)"}">${fmt(on.get(k))}</span>`
-          : `<span class="cel off">–</span>`).join("") + `<span class="n">${curto(m.c[bi] || 0)}</span>`;
-        tot += ems.length; bate += ems.filter((e) => e.g >= D.alvo).length;
+      let total = 0, met = 0, grid = "";
+      for (const [name, r] of Object.entries(D.brazil.regions)) {
+        const rs = regionStrata(name, bi), on = new Map(rs.map((e) => [e.k, e.g]));
+        grid += `<span class="nm">${name}</span>` + [0, 1, 2, 3].map((k) => on.has(k)
+          ? `<span class="cell" style="background:${binColor(BINS_SEQ, on.get(k))};color:${on.get(k) >= 30 && on.get(k) < 59 ? "#fff" : "var(--ink)"}">${fmt(on.get(k))}</span>`
+          : `<span class="cell off">–</span>`).join("") + `<span class="n">${short(r.c[bi] || 0)}</span>`;
+        total += rs.length; met += rs.filter((e) => e.g >= D.target).length;
       }
-      h += `<div class="sec"><h3>Brazil by region and serotype</h3><p class="alvo">${bate} of ${tot} region × serotype strata at the minimum of ${D.alvo}</p>`
-        + `<div class="mtx"><span></span>${D.sorotipos.map((s) => `<span class="hd">${s}</span>`).join("")}<span class="hd n">cases</span>${tab}</div>`
-        + `<p class="rodape">“–” not circulating (${D.brasil.circ && D.brasil.circ.Norte[0][bi] != null ? "SINAN serotyping" : "from open sequences; SINAN serotyping starts in 2014"}). Cases: SINAN probable.</p></div>`;
+      h += `<div class="sec"><h3>Brazil by region and serotype</h3><p class="status">${met} of ${total} region × serotype strata at the minimum of ${D.target}</p>`
+        + `<div class="mtx"><span></span>${D.serotypes.map((s) => `<span class="hd">${s}</span>`).join("")}<span class="hd n">cases</span>${grid}</div>`
+        + `<p class="footnote">“–” not circulating (${sinanYear(bi) ? "SINAN serotyping" : "from open sequences; SINAN serotyping starts in 2014"}). Cases: SINAN probable.</p></div>`;
     }
   }
   h += `<div class="sec"><h3>Open sequences per year, by serotype</h3>`
-    + barras(p.s || [p.g], { alvo: D.alvo, cores: p.s ? CORES_SORO : ["var(--s3)"], rotulo: "Open sequences per year" })
-    + (p.s ? `<div class="leg">${D.sorotipos.map((s, k) => `<span><i style="background:${CORES_SORO[k]}"></i>${s}</span>`).join("")}</div>` : "") + `</div>`;
-  const serieC = p.c ? p.c.map((v, j) => v || 0) : null;
-  const extra = ANOS.map((_, j) => (p.c && p.c[j]) ? 0 : (iso === "BRA" ? (casosBR(j) || 0) : (casos(iso, j).v || 0)));
-  const fonteExtra = iso === "BRA" ? "SINAN" : "WHO";
-  h += `<div class="sec"><h3>Reported cases per year${extra.some((v) => v) ? ` <small>· light bars: ${fonteExtra}, ${ANOS[ANOS.length - 1]} year to date</small>` : ""}</h3>`
-    + ((serieC && serieC.some((v) => v)) || extra.some((v) => v) ? barras([serieC || ANOS.map(() => 0), extra], { cores: ["var(--ink-3)", "var(--s1)"], rotulo: "Reported cases per year" }) : `<p class="nota">No reported-case series for this country.</p>`)
+    + bars(p.s || [p.g], { target: D.target, colors: p.s ? SERO_COLORS : ["var(--s3)"], label: "Open sequences per year" })
+    + (p.s ? `<div class="leg">${D.serotypes.map((s, k) => `<span><i style="background:${SERO_COLORS[k]}"></i>${s}</span>`).join("")}</div>` : "") + `</div>`;
+  const caseSeries = p.c ? p.c.map((v) => v || 0) : null;
+  const extra = YEARS.map((_, j) => (p.c && p.c[j]) ? 0 : (iso === "BRA" ? (brazilCases(j) || 0) : (caseCount(iso, j).v || 0)));
+  const extraSource = iso === "BRA" ? "SINAN" : "WHO";
+  h += `<div class="sec"><h3>Reported cases per year${extra.some((v) => v) ? ` <small>· light bars: ${extraSource}, ${YEARS[YEARS.length - 1]} year to date</small>` : ""}</h3>`
+    + ((caseSeries && caseSeries.some((v) => v)) || extra.some((v) => v) ? bars([caseSeries || YEARS.map(() => 0), extra], { colors: ["var(--ink-3)", "var(--s1)"], label: "Reported cases per year" }) : `<p class="note">No reported-case series for this country.</p>`)
     + `</div>`;
   el.innerHTML = h;
 }
 
 function render() {
-  $("anoTxt").textContent = st.ano;
-  desenhaMapa(); desenhaLegenda(); desenhaResumo(); desenhaCard();
+  $("yearLabel").textContent = state.year;
+  drawMap(); drawLegend(); drawSummary(); drawCard();
 }
 
-function liga() {
+function bind() {
   const q = new URLSearchParams(location.search);
-  if (ANOS.includes(+q.get("ano"))) st.ano = +q.get("ano");
-  if (q.get("pais") && D.paises[q.get("pais")]) st.sel = q.get("pais");
-  const ano = $("ano");
-  ano.min = ANOS[0]; ano.max = ANOS[ANOS.length - 1]; ano.value = st.ano;
-  ano.addEventListener("input", () => { st.ano = +ano.value; render(); });
+  if (YEARS.includes(+q.get("year"))) state.year = +q.get("year");
+  if (q.get("country") && D.countries[q.get("country")]) state.sel = q.get("country");
+  const slider = $("year");
+  slider.min = YEARS[0]; slider.max = YEARS[YEARS.length - 1]; slider.value = state.year;
+  slider.addEventListener("input", () => { state.year = +slider.value; render(); });
   document.querySelectorAll(".seg button").forEach((b) => b.addEventListener("click", () => {
-    st.modo = b.dataset.modo;
+    state.mode = b.dataset.mode;
     document.querySelectorAll(".seg button").forEach((x) => x.setAttribute("aria-pressed", x === b));
     render();
   }));
-  const tt = $("tt"), mapa = $("mapa");
-  mapa.addEventListener("mousemove", (ev) => {
+  const tt = $("tt"), map = $("map");
+  map.addEventListener("mousemove", (ev) => {
     const iso = ev.target.dataset && ev.target.dataset.iso;
-    const p = iso && D.paises[iso];
+    const p = iso && D.countries[iso];
     if (!iso) { tt.hidden = true; return; }
-    const i = ANOS.indexOf(st.ano);
-    const mac = ev.target.dataset.macro, bi = D.brasil.anos.indexOf(st.ano);
-    if (mac && bi >= 0) {
-      const m = D.brasil.macro[mac];
-      const ems = estratosMacro(mac, bi);
-      tt.innerHTML = `<b>${MACRO_EN[mac]}, Brazil</b>, ${st.ano}<br>` + (ems.length ? ems.map((e) => `${D.sorotipos[e.k]}: ${fmt(e.g)}`).join("<br>") : "no open sequence") + `<br>${fmt(m.c[bi])} cases`;
-    } else if (!p) tt.innerHTML = `<b>${G.nome_natural_earth[iso] || iso}</b><br>no dengue data`;
+    const i = YEARS.indexOf(state.year);
+    const region = ev.target.dataset.region, bi = D.brazil.years.indexOf(state.year);
+    if (region && bi >= 0) {
+      const r = D.brazil.regions[region], rs = regionStrata(region, bi);
+      tt.innerHTML = `<b>${region}, Brazil</b>, ${state.year}<br>` + (rs.length ? rs.map((e) => `${D.serotypes[e.k]}: ${fmt(e.g)}`).join("<br>") : "no open sequence") + `<br>${fmt(r.c[bi])} cases`;
+    } else if (!p) tt.innerHTML = `<b>${G.names[iso] || iso}</b><br>no dengue data`;
     else {
-      const cc = casos(iso, i), c = cc.v;
-      const es = estratosPais(iso, i);
-      tt.innerHTML = `<b>${p.n}</b>, ${st.ano}<br>` + (es.length ? es.map((e) => `${D.sorotipos[e.k]}: ${fmt(e.g)}`).join("<br>") : "no open sequence") + (c ? `<br>${fmt(c)} cases${cc.fonte === "WHO" ? (cc.parcial ? ` to ${mesAno(cc.ate)}, WHO` : ", WHO") : ""}` : "");
+      const cc = caseCount(iso, i), c = cc.v, strata = countryStrata(iso, i);
+      tt.innerHTML = `<b>${p.n}</b>, ${state.year}<br>` + (strata.length ? strata.map((e) => `${D.serotypes[e.k]}: ${fmt(e.g)}`).join("<br>") : "no open sequence")
+        + (c ? `<br>${fmt(c)} cases${cc.source === "WHO" ? (cc.partial ? ` to ${monthYear(cc.until)}, WHO` : ", WHO") : ""}` : "");
     }
     tt.hidden = false;
     tt.style.left = Math.min(ev.clientX + 14, innerWidth - 270) + "px";
     tt.style.top = ev.clientY + 14 + "px";
   });
-  mapa.addEventListener("mouseleave", () => (tt.hidden = true));
-  mapa.addEventListener("click", (ev) => {
+  map.addEventListener("mouseleave", () => (tt.hidden = true));
+  map.addEventListener("click", (ev) => {
     const iso = ev.target.dataset && ev.target.dataset.iso;
-    if (iso && D.paises[iso]) { st.sel = iso; st.clicou = true; render(); }
+    if (iso && D.countries[iso]) { state.sel = iso; state.clicked = true; render(); }
   });
-  $("csv").addEventListener("click", baixaCSV);
-  let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(desenhaCard, 120); });
+  $("csv").addEventListener("click", downloadCSV);
+  let t; addEventListener("resize", () => { clearTimeout(t); t = setTimeout(drawCard, 120); });
 }
 
-function baixaCSV() {
-  const linhas = [["iso3", "country", "year", "open_sequences", ...D.sorotipos.map((s) => s.replace("-", "")), "reported_cases", "case_source", "sequences_per_10000_cases"].join(",")];
-  for (const [iso, p] of Object.entries(D.paises)) {
-    ANOS.forEach((a, i) => {
-      const cc = casos(iso, i), c = cc.v;
-      linhas.push([iso, `"${p.n}"`, a, p.g[i], ...(p.s ? p.s.map((r) => r[i]) : [0, 0, 0, 0]), c ?? "", c ? cc.fonte : "", c ? (p.g[i] / c * 1e4).toFixed(4) : ""].join(","));
+function downloadCSV() {
+  const rows = [["iso3", "country", "year", "open_sequences", ...D.serotypes.map((s) => s.replace("-", "")), "reported_cases", "case_source", "sequences_per_10000_cases"].join(",")];
+  for (const [iso, p] of Object.entries(D.countries)) {
+    YEARS.forEach((yr, i) => {
+      const cc = caseCount(iso, i), c = cc.v;
+      rows.push([iso, `"${p.n}"`, yr, p.g[i], ...(p.s ? p.s.map((r) => r[i]) : [0, 0, 0, 0]), c ?? "", c ? cc.source : "", c ? (p.g[i] / c * 1e4).toFixed(4) : ""].join(","));
     });
   }
-  const url = URL.createObjectURL(new Blob([linhas.join("\n")], { type: "text/csv" }));
-  const a = Object.assign(document.createElement("a"), { href: url, download: `dengue_genomic_coverage_${D.corte}.csv` });
+  const url = URL.createObjectURL(new Blob([rows.join("\n")], { type: "text/csv" }));
+  const a = Object.assign(document.createElement("a"), { href: url, download: `dengue_genomic_coverage_${D.cutoff}.csv` });
   a.click(); URL.revokeObjectURL(url);
 }
 
 Promise.all(["data/panel.json", "data/geo.json", "data/brazil_regions.json"].map((u) => fetch(u).then((r) => r.json()))
   .concat(fetch("data/who_cases.json").then((r) => r.ok ? r.json() : null).catch(() => null)))
-  .then(([d, g, br, oms]) => {
-    D = d; G = g; BR = br; OMS = oms; ANOS = d.anos;
-    dengue = new Set(Object.entries(d.paises).filter(([, p]) => p.c && p.c.some((v) => v > 0)).map(([k]) => k));
-    $("fonte").textContent = `Sequences: Pathoplexus open data, version ${d.dataVersion}, ${d.corte}. Cases: OpenDengue V1.3 (to 2024)${oms ? ", WHO (2025–2026, accessed " + oms.acesso + ")" : ""}, SINAN for Brazil. Draft.`;
-    if (oms) $("credito").textContent = oms.atribuicao;
-    liga(); render();
+  .then(([d, g, br, who]) => {
+    D = d; G = g; BR = br; WHO = who; YEARS = d.years;
+    dengue = new Set(Object.entries(d.countries).filter(([, p]) => p.c && p.c.some((v) => v > 0)).map(([k]) => k));
+    $("sourceLine").textContent = `Sequences: Pathoplexus open data, version ${d.dataVersion}, ${d.cutoff}. Cases: OpenDengue V1.3 (to 2024)${who ? ", WHO (2025–2026, accessed " + who.accessed + ")" : ""}, SINAN for Brazil. Draft.`;
+    if (who) $("credit").textContent = who.attribution;
+    bind(); render();
   })
-  .catch(() => { document.querySelector("main").innerHTML = "<p>Open through a local server: <code>python3 -m http.server 8001</code> in this folder.</p>"; });
+  .catch(() => { document.querySelector("main").innerHTML = "<p>Open through a local server: <code>python3 -m http.server 8000</code> in this folder.</p>"; });
 </script>
 </body>
 </html>
