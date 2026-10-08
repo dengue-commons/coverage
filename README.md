@@ -8,7 +8,7 @@ confidence. Brazil is shown by macroregion and serotype.
 full data are in: Bermann T, et al. *Open genomic surveillance of dengue virus against reported and
 modeled burden, worldwide, 2001–2026.* In preparation.
 
-Live page: https://thalesbermann.github.io/dengue-genomic-coverage/
+Live page: https://dengue-commons.github.io/coverage/
 
 ## Data
 
