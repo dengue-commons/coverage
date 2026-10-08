@@ -473,8 +473,8 @@ function baixaCSV() {
   a.click(); URL.revokeObjectURL(url);
 }
 
-Promise.all(["dados/mvp.json", "dados/geo.json", "dados/br_regioes.json"].map((u) => fetch(u).then((r) => r.json()))
-  .concat(fetch("dados/oms_casos.json").then((r) => r.ok ? r.json() : null).catch(() => null)))
+Promise.all(["data/panel.json", "data/geo.json", "data/brazil_regions.json"].map((u) => fetch(u).then((r) => r.json()))
+  .concat(fetch("data/who_cases.json").then((r) => r.ok ? r.json() : null).catch(() => null)))
   .then(([d, g, br, oms]) => {
     D = d; G = g; BR = br; OMS = oms; ANOS = d.anos;
     dengue = new Set(Object.entries(d.paises).filter(([, p]) => p.c && p.c.some((v) => v > 0)).map(([k]) => k));

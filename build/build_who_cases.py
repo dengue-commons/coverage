@@ -1,17 +1,17 @@
-"""Camada de casos da OMS para os anos que o OpenDengue ainda não cobre (2025 e 2026).
+"""WHO case layer for the years OpenDengue does not cover yet (2025 and 2026).
 
-Lê a API pública OData do xMart da OMS (V_DENGUE_GLOBAL_VALIDATED_PUBLIC), soma os casos por país e
-ano e escreve dados/oms_casos.json. Esse arquivo é uma adaptação de dado da OMS e sai sob a licença
-dela, CC BY-NC-SA 3.0 IGO, separado do resto do painel (CC BY 4.0). Nenhum dado bruto é guardado aqui.
+Reads the WHO xMart public OData API (V_DENGUE_GLOBAL_VALIDATED_PUBLIC), sums cases by country and
+year and writes data/who_cases.json. That file is an adaptation of WHO data and keeps the WHO licence,
+CC BY-NC-SA 3.0 IGO, separate from the rest of the page (CC BY 4.0). No raw data is stored here.
 
-    python3 monta_oms.py              # consulta a API
-    python3 monta_oms.py --sem-rede   # usa a extração de 07/10/2026 em ../dados/oms_arbov/
+    python3 build_who_cases.py             # queries the API
+    python3 build_who_cases.py --offline   # uses the 7 October 2026 extraction in the analysis tree
 
-Regras:
-- um país-ano pode vir em mais de um tipo de período (epiweek, isoweek, month); fica o tipo com mais
-  registros, e no empate o de maior total, para não somar a mesma semana duas vezes;
-- só entram registros com casos informados e com início até a data da consulta;
-- `ate` é o início do último período informado, para a tela dizer "até quando".
+Rules:
+- a country-year can come in more than one period type (epiweek, isoweek, month); the type with most
+  records is kept, and on a tie the one with the larger total, so that no week is counted twice;
+- only records with reported cases and a start date up to the query date enter;
+- `ate` is the start of the last reported period, so the page can say "up to when".
 """
 import argparse
 import datetime as dt
@@ -22,13 +22,13 @@ import sys
 
 import pandas as pd
 
-AQUI = pathlib.Path(__file__).resolve().parent
+HERE = pathlib.Path(__file__).resolve().parent
 URL = "https://xmart-api-public.who.int/ARBOV/V_DENGUE_GLOBAL_VALIDATED_PUBLIC"
 ANOS = (2025, 2026)
-EXTRACAO_LOCAL = AQUI.parent / "dados" / "oms_arbov" / "registros_20261007.tsv"
+LOCAL_EXTRACTION = HERE.parent / "dados" / "oms_arbov" / "registros_20261007.tsv"
 
 
-def le_api() -> tuple[pd.DataFrame, str]:
+def read_api() -> tuple[pd.DataFrame, str]:
     import requests
 
     r = requests.get(URL, timeout=180, headers={"Accept": "application/json"})
@@ -38,19 +38,19 @@ def le_api() -> tuple[pd.DataFrame, str]:
     return pd.DataFrame(linhas), dt.date.today().isoformat()
 
 
-def le_local() -> tuple[pd.DataFrame, str]:
-    return pd.read_csv(EXTRACAO_LOCAL, sep="\t", comment="#", low_memory=False), "2026-10-07"
+def read_local() -> tuple[pd.DataFrame, str]:
+    return pd.read_csv(LOCAL_EXTRACTION, sep="\t", comment="#", low_memory=False), "2026-10-07"
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--sem-rede", action="store_true")
+    ap.add_argument("--offline", action="store_true")
     args = ap.parse_args()
-    t, acesso = le_local() if args.sem_rede else le_api()
+    t, acesso = read_local() if args.offline else read_api()
 
     for c in ("ISO3", "YEAR", "START_DATE", "DATE_TYPE", "CASES"):
         if c not in t.columns:
-            print(f"campo {c} ausente na resposta da OMS: o esquema mudou", file=sys.stderr)
+            print(f"field {c} missing from the WHO response: the schema changed", file=sys.stderr)
             return 1
     t["CASES"] = pd.to_numeric(t["CASES"], errors="coerce")
     t["YEAR"] = pd.to_numeric(t["YEAR"], errors="coerce")
@@ -81,7 +81,7 @@ def main() -> int:
         ),
         "paises": paises,
     }
-    (AQUI.parent / "dados" / "oms_casos.json").write_text(json.dumps(saida, ensure_ascii=False, separators=(",", ":")))
+    (HERE.parent / "data" / "who_cases.json").write_text(json.dumps(saida, ensure_ascii=False, separators=(",", ":")))
     n = {a: sum(1 for p in paises.values() if str(a) in p) for a in ANOS}
     print("ok", n, "acesso", acesso)
     return 0

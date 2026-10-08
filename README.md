@@ -29,8 +29,8 @@ least 1% of the typed cases there.
 
 - Code: MIT (`LICENSE`).
 - Our derived data and text: CC BY 4.0 (`LICENSE-data`).
-- `dados/oms_casos.json` is an adaptation of WHO data and keeps the WHO licence, CC BY-NC-SA 3.0 IGO
-  (`dados/oms_casos.LICENSE.txt`).
+- `data/who_cases.json` is an adaptation of WHO data and keeps the WHO licence, CC BY-NC-SA 3.0 IGO
+  (`data/who_cases.LICENSE.txt`).
 - OpenDengue counts: CC BY 4.0, from OpenDengue; changes were made (aggregated by country and year).
 
 ## Running locally
@@ -39,6 +39,6 @@ least 1% of the typed cases there.
 python3 -m http.server 8000
 ```
 
-and open http://localhost:8000/. The page reads the JSON files in `dados/`. The scripts in `build/`
+and open http://localhost:8000/. The page reads the JSON files in `data/`. The scripts in `build/`
 are the ones that produced them; in this version they run inside the author's analysis tree, and
-`build/monta_oms.py` runs standalone against the WHO API.
+`build/build_who_cases.py` runs standalone against the WHO API.

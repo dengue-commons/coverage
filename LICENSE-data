@@ -3,7 +3,7 @@ Creative Commons Attribution 4.0 International licence (CC BY 4.0):
 https://creativecommons.org/licenses/by/4.0/
 
 Exceptions, which keep the licence of their source:
-- dados/oms_casos.json: adaptation of World Health Organization data, CC BY-NC-SA 3.0 IGO
-  (see dados/oms_casos.LICENSE.txt).
+- data/who_cases.json: adaptation of World Health Organization data, CC BY-NC-SA 3.0 IGO
+  (see data/who_cases.LICENSE.txt).
 - Reported case counts up to 2024 derive from OpenDengue (CC BY 4.0); changes were made.
 - Map geometry from Natural Earth is in the public domain; Brazilian macroregion boundaries are from IBGE.

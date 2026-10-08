@@ -1,4 +1,4 @@
-oms_casos.json is an adaptation of World Health Organization data (Global Dengue Surveillance,
+who_cases.json is an adaptation of World Health Organization data (Global Dengue Surveillance,
 V_DENGUE_GLOBAL_VALIDATED_PUBLIC, xMart public API): dengue cases summed by country and year, 2025-2026.
 Licence: CC BY-NC-SA 3.0 IGO (https://creativecommons.org/licenses/by-nc-sa/3.0/igo/).
 This file is licensed separately from the rest of this repository (code MIT, other data CC BY 4.0).
