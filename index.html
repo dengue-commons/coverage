@@ -61,9 +61,11 @@ h1 { font-size: 30px; line-height: 1.15; margin: 2px 0 6px; letter-spacing: -0.0
 .card svg { width: 100%; height: auto; display: block; overflow: visible; }
 .card svg text { fill: var(--ink-3); font-size: 12px; }
 .card .leg { font-size: 13px; gap: 4px 12px; margin-top: 4px; }
-.why { font-size: 14px; color: var(--ink-2); margin: 8px 0 0; max-width: 75ch; }
+.why { font-size: 14px; color: var(--ink-2); margin: 8px 0 0 80px; }
+.why p { text-align: justify; hyphens: auto; }
 .why summary { cursor: pointer; color: var(--ink); width: max-content; }
 .why p { margin: 6px 0 0; }
+@media (max-width: 640px) { .why { margin-left: 0; } }
 svg.map { width: 100%; height: auto; display: block; }
 svg.map path, svg.map circle { stroke: var(--stroke); stroke-width: 0.4; cursor: pointer; }
 svg.map .sel { stroke: var(--ink-2); stroke-width: 0.7; }
@@ -131,9 +133,9 @@ footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--rule);
         <h1>Dengue genomic surveillance coverage</h1>
         <p class="sub">Open dengue sequences per country and year, against a minimum of 59 sequences a year for each circulating serotype, enough to detect a lineage at 5%.</p>
         <p class="paper">Methods, the derivation of the target and the full data are in <span class="ref">Bermann T, et al. Open genomic surveillance of dengue virus against reported and modeled burden, worldwide, 2001–2026. In preparation.</span></p>
-        <details class="why"><summary>Why 59?</summary><p>59 is the smallest random sample that contains at least one sequence from a lineage carried by 5% of infections, with 95% confidence (1 − 0.95<sup>59</sup> ≥ 0.95). It is a floor, not a goal. Each serotype in circulation needs its own 59, so a country is colored by its least-sequenced serotype. A serotype counts as circulating when it makes up at least 10% of the open sequences that year; in Brazil, when SINAN reports cases of it in the region. Brazil is shown by region because a national total can hide regions with almost no sequences. Open sequences are public dengue virus sequences of at least 505 bp in Pathoplexus (about 5% of the genome), the genome coverage recommended for lineage assignment.</p></details>
       </div>
     </div>
+    <details class="why"><summary>Why 59?</summary><p>59 is the smallest random sample that contains at least one sequence from a lineage carried by 5% of infections, with 95% confidence (1 − 0.95<sup>59</sup> ≥ 0.95). It is a floor, not a goal. Each serotype in circulation needs its own 59, so a country is colored by its least-sequenced serotype. A serotype counts as circulating when it makes up at least 10% of the open sequences that year; in Brazil, when SINAN reports cases of it in the region. Brazil is shown by region because a national total can hide regions with almost no sequences. Open sequences are public dengue virus sequences of at least 505 bp in Pathoplexus (about 5% of the genome), the genome coverage recommended for lineage assignment.</p></details>
   </header>
   <div class="bar">
     <div class="year">
