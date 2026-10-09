@@ -309,7 +309,7 @@ function drawLegend() {
   const sw = (k, label) => `<span><i style="background:${color(k)}"></i>${label}</span>`;
   $("leg").innerHTML = state.mode === "seq"
     ? `<span>Sequences in a serotype:</span>` + BINS_SEQ.map((b) => sw(b.k, b.label)).join("")
-      + sw("amb", "59+ in one, other serotypes untyped") + sw("ok", "59+ in every circulating serotype")
+      + sw("amb", "59+ in at least one serotype") + sw("ok", "59+ in every circulating serotype")
       + sw("land-none", "no dengue data")
     : `<span>Sequences per 10,000 cases:</span>` + BINS_RATE.map((b) => sw(b.k, b.label)).join("") + sw("land-none", "no case data this year");
 }
@@ -395,7 +395,7 @@ function drawCard() {
   const best = p.s ? D.serotypes[seqs.indexOf(a.top)] : "one serotype";
   const status = g === 0 ? `${dot("zero")}No open sequence this year`
     : a.typed ? `${dot(a.k)}${a.ok} of ${a.strata.length} circulating serotype${a.strata.length > 1 ? "s" : ""} at the minimum of ${D.target}`
-    : a.top >= D.target ? `${dot("amb")}${best} at ${D.target}+; the other serotypes are untyped`
+    : a.top >= D.target ? `${dot("amb")}${best} at ${D.target}+; not known which other serotypes circulated`
     : `${dot(a.k)}No serotype at the minimum of ${D.target}`;
   let h = `<h2>${p.n}, ${state.year}</h2>`
     + `<div class="facts"><div><b>${fmt(g)}</b><span>open sequences</span></div><div><b>${c ? fmt(c) : "–"}</b><span>${c ? cLabel : "no open case data yet"}</span></div></div>`
