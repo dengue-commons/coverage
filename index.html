@@ -42,6 +42,7 @@ h1 { font-size: 30px; line-height: 1.15; margin: 2px 0 6px; letter-spacing: -0.0
 .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
 .seg button { border: 0; background: transparent; color: var(--ink-2); padding: 8px 14px; font: inherit; cursor: pointer; }
 .seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.seg .short { display: none; }
 
 .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 6px; }
 .tile .v { font-size: 40px; line-height: 1.1; font-weight: 650; font-variant-numeric: tabular-nums; }
@@ -105,6 +106,8 @@ footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--rule);
   .sub { font-size: 16px; }
   .year output { font-size: 28px; }
   .seg { width: 100%; } .seg button { flex: 1; padding: 8px 6px; }
+  .seg .long { display: none; } .seg .short { display: inline; }
+  .paper { text-align: left; }
   .tiles { grid-template-columns: 1fr 1fr; gap: 10px 14px; } .tiles .tile:last-child { grid-column: 1 / -1; }
   .tile .v { font-size: 24px; } .tile .l { font-size: 13px; line-height: 1.3; }
   .leg { gap: 4px 12px; font-size: 13px; }
@@ -138,7 +141,7 @@ footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--rule);
       </svg>
       <div>
         <h1>Dengue genomic surveillance coverage</h1>
-        <p class="sub">Open dengue sequences per country and year, against a minimum of 59 sequences a year for each circulating serotype, enough to find a lineage that makes up 5% of it.</p>
+        <p class="sub">Open dengue sequences per country and year, against a minimum of 59 sequences a year for each circulating serotype, enough to find, with 95% confidence, a lineage that makes up 5% of it.</p>
         <p class="paper">Methods, the derivation of the target and the full data are in <span class="ref">Bermann T, et al. Open genomic surveillance of dengue virus against reported and modeled burden, worldwide, 2001–2026. In preparation.</span></p>
       </div>
     </div>
@@ -151,7 +154,7 @@ footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--rule);
     </div>
     <div class="seg" role="group" aria-label="Map shows">
       <button data-mode="seq" aria-pressed="true">Sequences</button>
-      <button data-mode="rate" aria-pressed="false">Per 10,000 cases</button>
+      <button data-mode="rate" aria-pressed="false">Per 10<span class="long">,000</span><span class="short">k</span><span class="long"> reported</span> cases</button>
     </div>
   </div>
 
@@ -222,8 +225,10 @@ const BINS_RATE = [
   { k: "s1", label: "< 1", test: (v) => v < 1 },
   { k: "s2", label: "1–9", test: (v) => v < 10 },
   { k: "s3", label: "10–49", test: (v) => v < 50 },
-  { k: "s4", label: "50+ (0.5% of cases)", test: () => true },
+  { k: "s4", label: "50+", test: () => true },
 ];
+// Below this many reported cases the ratio swings on a handful of sequences, so the cell is not colored.
+const MIN_CASES = 1000;
 const color = (k) => `var(--${k})`;
 const binColor = (bins, v) => color(bins.find((b) => b.test(v)).k);
 const seqColor = (v) => v >= D.target ? color("ok") : binColor(BINS_SEQ, v);
@@ -262,7 +267,7 @@ function cellKey(iso, i) {
   const g = p.g[i];
   if (state.mode === "seq") return dengue.has(iso) || g > 0 ? countryAssess(iso, i).k : null;
   const c = caseCount(iso, i).v;
-  return c ? BINS_RATE.find((b) => b.test((g / c) * 1e4)).k : null;
+  return c >= MIN_CASES ? BINS_RATE.find((b) => b.test((g / c) * 1e4)).k : null;
 }
 
 function drawMap() {
@@ -291,7 +296,7 @@ function drawMap() {
   if (bi >= 0) {
     for (const [name, ds] of Object.entries(BR)) {
       const r = D.brazil.regions[name];
-      const k = state.mode === "seq" ? regionAssess(name, bi).k : (r.c[bi] ? BINS_RATE.find((b) => b.test(r.g[bi] / r.c[bi] * 1e4)).k : null);
+      const k = state.mode === "seq" ? regionAssess(name, bi).k : (r.c[bi] >= MIN_CASES ? BINS_RATE.find((b) => b.test(r.g[bi] / r.c[bi] * 1e4)).k : null);
       for (const d of ds) {
         const p = document.createElementNS(NS, "path");
         p.setAttribute("d", d);
@@ -311,7 +316,7 @@ function drawLegend() {
     ? `<span>Sequences in a serotype:</span>` + BINS_SEQ.map((b) => sw(b.k, b.label)).join("")
       + sw("amb", "59+ in at least one serotype") + sw("ok", "59+ in every circulating serotype")
       + sw("land-none", "no dengue data")
-    : `<span>Sequences per 10,000 cases:</span>` + BINS_RATE.map((b) => sw(b.k, b.label)).join("") + sw("land-none", "no case data this year");
+    : `<span>Sequences per 10,000 reported cases:</span>` + BINS_RATE.map((b) => sw(b.k, b.label)).join("") + sw("land-none", `fewer than ${fmt(MIN_CASES)} reported cases`);
 }
 
 function drawSummary() {
@@ -328,10 +333,11 @@ function drawSummary() {
   $("tCases").nextElementSibling.textContent = whoYear ? (state.year === YEARS[YEARS.length - 1] ? "reported cases, year to date (WHO)" : "reported cases (WHO)") : "reported cases";
   $("tCases").style.fontSize = c ? "" : "20px";
   $("tMet").textContent = `${fmt(met)} of ${fmt(universe.size)}`;
-  const recent = state.year >= YEARS[YEARS.length - 1] - 1;
+  const recent = state.year >= YEARS[YEARS.length - 1] - 2;
   const noCases = state.mode === "rate" && state.year > 2024 && !WHO;
   $("note").textContent = noCases ? "Reported-case data end in 2024; switch to Sequences for later years."
-    : recent ? "Recent years are still filling in: most sequences reach public databases years after collection." : "";
+    : [recent ? "Recent years are still filling in: most sequences reach public databases years after collection." : "",
+       state.mode === "rate" ? "Countries whose reported dengue is mostly imported rise to the top here." : ""].filter(Boolean).join(" ");
 }
 
 function niceStep(max, ticks = 4) {
