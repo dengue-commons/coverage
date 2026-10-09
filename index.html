@@ -149,7 +149,7 @@ footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--rule);
   <div class="tiles">
     <div class="tile"><div class="v" id="tSeq"></div><div class="l">open sequences</div></div>
     <div class="tile"><div class="v" id="tCases"></div><div class="l">reported cases</div></div>
-    <div class="tile"><div class="v" id="tMet"></div><div class="l">countries with 59+ for every serotype</div></div>
+    <div class="tile"><div class="v" id="tMet"></div><div class="l">countries with 59+ for every circulating serotype</div></div>
   </div>
   <p class="note" id="note"></p>
   <svg class="map" id="map" role="img" aria-label="World map of open dengue sequences"></svg>
@@ -207,7 +207,7 @@ const BINS_SEQ = [
   { k: "s1", label: "1–9", test: (v) => v < 10 },
   { k: "s2", label: "10–29", test: (v) => v < 30 },
   { k: "s3", label: "30–58", test: (v) => v < 59 },
-  { k: "ok", label: "59+ for every serotype", test: () => true },
+  { k: "ok", label: "59+ for every circulating serotype", test: () => true },
 ];
 const BINS_RATE = [
   { k: "zero", label: "0", test: (v) => v === 0 },
