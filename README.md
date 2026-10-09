@@ -4,7 +4,7 @@ Open dengue virus sequences per country and year, against a minimum of 59 open s
 circulating serotype, the smallest random sample that detects a lineage at 5% prevalence with 95%
 confidence. Brazil is shown by macroregion and serotype.
 
-**Draft, version 0.1.** Data frozen on 7–8 October 2026. Methods, the derivation of the target and the
+**Draft, version 0.2.** Data frozen on 7–8 October 2026; map states revised on 9 October 2026. Methods, the derivation of the target and the
 full data are in: Bermann T, et al. *Open genomic surveillance of dengue virus against reported and
 modeled burden, worldwide, 2001–2026.* In preparation.
 
@@ -21,9 +21,12 @@ Live page: https://dengue-commons.github.io/coverage/
 | Brazil macroregions | IBGE malhas API | static |
 | world map | Natural Earth, public domain | static |
 
-A serotype counts as circulating when it is at least 10% of the open sequences of that country and
-year; in Brazil, from 2014 on, when SINAN reports at least 10 typed cases of it in the region and at
-least 1% of the typed cases there.
+The map has three states, and serotype circulation never comes from the sequences themselves. Where
+no serotype reached 59, the place falls short whatever circulated and is colored by its
+most-sequenced serotype. Where one did and no case typing is available, the cell is amber: the other
+serotypes cannot be judged. Where case typing exists (Brazil from 2014 on, a serotype circulates in a
+region when SINAN reports at least 10 typed cases of it and at least 1% of the typed cases there),
+each circulating serotype must reach 59.
 
 ## Licence
 

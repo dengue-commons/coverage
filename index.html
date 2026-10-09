@@ -3,23 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="only light">
 <title>Dengue Genomic Coverage</title>
 <style>
 :root {
   --bg: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --ink-3: #8a8984;
   --rule: #e4e3df; --grid: #eeede9; --land-none: #e8e7e3; --stroke: #fcfcfb;
-  --zero: #e9897f; --s1: #b7d3f6; --s2: #6da7ec; --s3: #2a78d6; --s4: #0d366b; --ok: #8fb79a;
+  --zero: #e9897f; --s1: #b7d3f6; --s2: #6da7ec; --s3: #2a78d6; --s4: #0d366b; --ok: #8fb79a; --amb: #e3c27a;
   --d1: #2a78d6; --d2: #eb6834; --d3: #1baf7a; --d4: #eda100;
   --target: #0b0b0b; --panel: #f3f2ee;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --ink-3: #8f8e86;
-    --rule: #383835; --grid: #2a2a28; --land-none: #2e2e2c; --stroke: #1a1a19;
-    --zero: #c9574d; --s1: #184f95; --s2: #2a78d6; --s3: #6da7ec; --s4: #cde2fb; --ok: #6f9a7a;
-    --d1: #3987e5; --d2: #d95926; --d3: #199e70; --d4: #c98500;
-    --target: #ffffff; --panel: #242422;
-  }
+  color-scheme: only light;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--ink);
@@ -31,6 +24,7 @@ main { max-width: 1920px; margin: 0 auto; padding: 24px clamp(16px, 3vw, 48px) 4
 .brand svg { flex: none; width: 64px; height: 64px; color: var(--ink); }
 h1 { font-size: 30px; line-height: 1.15; margin: 2px 0 6px; letter-spacing: -0.015em; }
 .sub { color: var(--ink-2); margin: 0 0 8px; font-size: 17px; }
+.sub, .paper, .why p, .download span, .note, .footnote, footer span { text-align: justify; hyphens: auto; }
 .paper { font-size: 14px; color: var(--ink-2); margin: 0; padding-left: 10px; border-left: 3px solid var(--ok); }
 .paper .ref { color: var(--ink); }
 .sources { font-size: 13px; color: var(--ink-3); text-align: right; margin-bottom: 18px; }
@@ -62,7 +56,6 @@ h1 { font-size: 30px; line-height: 1.15; margin: 2px 0 6px; letter-spacing: -0.0
 .card svg text { fill: var(--ink-3); font-size: 12px; }
 .card .leg { font-size: 13px; gap: 4px 12px; margin-top: 4px; }
 .why { font-size: 14px; color: var(--ink-2); margin: 8px 0 0 80px; }
-.why p { text-align: justify; hyphens: auto; }
 .why summary { cursor: pointer; color: var(--ink); width: max-content; }
 .why p { margin: 6px 0 0; }
 @media (max-width: 640px) { .why { margin-left: 0; } }
@@ -73,6 +66,8 @@ svg.map path.br-region { stroke-width: 0.6; }
 .leg { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--ink-2); margin-top: 8px; }
 .leg span { display: inline-flex; align-items: center; gap: 6px; }
 .leg i { width: 14px; height: 14px; border-radius: 3px; display: inline-block; }
+.leg .ln { width: 18px; border-top: 1.5px dashed var(--target); display: inline-block; }
+.card .leg.lines { margin-top: 2px; }
 
 .card h2 { font-size: 28px; margin: 0 0 4px; letter-spacing: -0.01em; }
 .card .sec { border-top: 1px solid var(--rule); margin-top: 12px; }
@@ -104,9 +99,21 @@ footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--rule);
 .download button { flex: none; font: inherit; font-size: 14px; color: var(--ink); background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 7px 14px; cursor: pointer; }
 .download button:hover { border-color: var(--ink-3); }
 @media (max-width: 640px) {
-  h1 { font-size: 24px; } .brand svg { width: 44px; height: 44px; }
-  .tiles { gap: 8px; } .tile .v { font-size: 18px; } .tile .l { font-size: 12px; }
+  main { padding: 16px 16px 32px; }
+  .top { padding-left: 0; }
+  h1 { font-size: 24px; } .brand { gap: 12px; } .brand svg { width: 44px; height: 44px; }
+  .sub { font-size: 16px; }
+  .year output { font-size: 28px; }
+  .seg { width: 100%; } .seg button { flex: 1; padding: 8px 6px; }
+  .tiles { grid-template-columns: 1fr 1fr; gap: 10px 14px; } .tiles .tile:last-child { grid-column: 1 / -1; }
+  .tile .v { font-size: 24px; } .tile .l { font-size: 13px; line-height: 1.3; }
+  .leg { gap: 4px 12px; font-size: 13px; }
   .sources { text-align: left; } .sources .list { justify-content: flex-start; }
+  .download { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .card { padding: 14px 14px 10px; border-radius: 12px; }
+  .card h2 { font-size: 24px; }
+  .facts { gap: 20px; } .facts b { font-size: 24px; }
+  .mtx { gap: 3px 3px; font-size: 12px; } .mtx .hd { font-size: 10px; letter-spacing: -0.02em; }
 }
 </style>
 </head>
@@ -131,11 +138,11 @@ footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--rule);
       </svg>
       <div>
         <h1>Dengue genomic surveillance coverage</h1>
-        <p class="sub">Open dengue sequences per country and year, against a minimum of 59 sequences a year for each circulating serotype, enough to detect a lineage at 5%.</p>
+        <p class="sub">Open dengue sequences per country and year, against a minimum of 59 sequences a year for each circulating serotype, enough to find a lineage that makes up 5% of it.</p>
         <p class="paper">Methods, the derivation of the target and the full data are in <span class="ref">Bermann T, et al. Open genomic surveillance of dengue virus against reported and modeled burden, worldwide, 2001–2026. In preparation.</span></p>
       </div>
     </div>
-    <details class="why"><summary>Why 59?</summary><p>59 is the smallest random sample that contains at least one sequence from a lineage carried by 5% of infections, with 95% confidence (1 − 0.95<sup>59</sup> ≥ 0.95). It is a floor, not a goal. Each serotype in circulation needs its own 59, so a country is colored by its least-sequenced serotype. A serotype counts as circulating when it makes up at least 10% of the open sequences that year; in Brazil, when SINAN reports cases of it in the region. Brazil is shown by region because a national total can hide regions with almost no sequences. Open sequences are public dengue virus sequences of at least 505 bp in Pathoplexus (about 5% of the genome), the genome coverage recommended for lineage assignment.</p></details>
+    <details class="why"><summary>Why 59?</summary><p>59 open sequences give a 95% chance of including a lineage that makes up 5% of one serotype in a season (1 − 0.95<sup>59</sup> ≥ 0.95). It is a floor, not a goal. Each circulating serotype needs its own 59. Where no serotype reached 59 the country falls short whatever circulated, and it is colored by its most-sequenced serotype. Where one did, the floor is met only if every other circulating serotype also has 59, and which serotypes circulated is known from case typing only for Brazil (SINAN, by region); elsewhere the cell stays amber. Brazil is shown by region and other countries as a whole, so the comparison is not like for like. Open sequences are public dengue virus sequences of at least 505 bp in Pathoplexus (about 5% of the genome), the coverage recommended for lineage assignment.</p></details>
   </header>
   <div class="bar">
     <div class="year">
@@ -151,7 +158,7 @@ footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--rule);
   <div class="tiles">
     <div class="tile"><div class="v" id="tSeq"></div><div class="l">open sequences</div></div>
     <div class="tile"><div class="v" id="tCases"></div><div class="l">reported cases</div></div>
-    <div class="tile"><div class="v" id="tMet"></div><div class="l">countries with 59+ for every circulating serotype</div></div>
+    <div class="tile"><div class="v" id="tMet"></div><div class="l">countries with 59+ in at least one serotype</div></div>
   </div>
   <p class="note" id="note"></p>
   <svg class="map" id="map" role="img" aria-label="World map of open dengue sequences"></svg>
@@ -193,7 +200,7 @@ const monthYear = (iso) => { const [y, m] = iso.split("-"); return `${MONTHS[+m 
 const state = { year: 2024, mode: "seq", sel: "BRA", clicked: false };
 // D: panel data; G: map geometry; BR: Brazilian regions; WHO: WHO case layer; YEARS: year axis.
 // Per country and per region: n = name, g = open sequences, c = reported cases, s = sequences by serotype.
-let D, G, BR, WHO, YEARS, dengue;
+let D, G, BR, WHO, YEARS, dengue, universe;
 
 // Reported cases: OpenDengue up to its last release; WHO for the years after it (separate layer, CC BY-NC-SA 3.0 IGO).
 function caseCount(iso, i) {
@@ -208,8 +215,7 @@ const BINS_SEQ = [
   { k: "zero", label: "0", test: (v) => v === 0 },
   { k: "s1", label: "1–9", test: (v) => v < 10 },
   { k: "s2", label: "10–29", test: (v) => v < 30 },
-  { k: "s3", label: "30–58", test: (v) => v < 59 },
-  { k: "ok", label: "59+ for every circulating serotype", test: () => true },
+  { k: "s3", label: "30–58", test: () => true },
 ];
 const BINS_RATE = [
   { k: "zero", label: "0", test: (v) => v === 0 },
@@ -220,35 +226,43 @@ const BINS_RATE = [
 ];
 const color = (k) => `var(--${k})`;
 const binColor = (bins, v) => color(bins.find((b) => b.test(v)).k);
+const seqColor = (v) => v >= D.target ? color("ok") : binColor(BINS_SEQ, v);
 
-// A serotype counts as circulating from the sequences alone when it is at least 10% of the open sequences
-// of that place and year, so that a handful of travel-associated sequences does not create a stratum.
-const SHARE = 0.10;
-const sinanYear = (bi) => D.brazil.circ && D.brazil.circ.North[0][bi] != null;
-// One stratum per circulating serotype. Brazil uses the SINAN mask by region when it exists.
-function regionStrata(name, bi) {
-  const r = D.brazil.regions[name], circ = D.brazil.circ && D.brazil.circ[name];
-  return r.s.map((row, k) => ({ k, g: row[bi], on: circ && circ[k][bi] != null ? circ[k][bi] : row[bi] > 0 && row[bi] >= SHARE * r.g[bi] })).filter((e) => e.on);
-}
-function countryStrata(iso, i) {
-  const p = D.countries[iso];
-  if (!p.s) return [];
-  const bi = D.brazil.years.indexOf(YEARS[i]);
-  if (iso === "BRA" && bi >= 0 && sinanYear(bi)) {
-    const on = [0, 1, 2, 3].map((k) => Object.keys(D.brazil.regions).some((n) => D.brazil.circ[n][k][bi]));
-    return p.s.map((row, k) => ({ k, g: row[i], on: on[k] || row[i] > 0 })).filter((e) => e.on);
+// Three states, and circulation never comes from the sequences themselves:
+// no serotype at 59 → short whatever circulated, shown by the most-sequenced serotype;
+// a serotype at 59 and no case typing → amber, the other serotypes cannot be judged;
+// case typing (SINAN, Brazil) → each circulating serotype is a stratum, shown by the weakest one.
+function assess(seqs, circ) {
+  const top = seqs.length ? Math.max(...seqs) : 0;
+  const typed = circ && circ.some(Boolean);
+  if (typed) {
+    const strata = seqs.map((g, k) => ({ k, g })).filter((e) => circ[e.k]);
+    const v = Math.min(...strata.map((e) => e.g)), ok = strata.filter((e) => e.g >= D.target).length;
+    return { typed, top, strata, ok, v, k: v >= D.target ? "ok" : BINS_SEQ.find((b) => b.test(v)).k };
   }
-  return p.s.map((row, k) => ({ k, g: row[i] })).filter((e) => e.g > 0 && e.g >= SHARE * p.g[i]);
+  return { typed: false, top, v: top, k: top >= D.target ? "amb" : BINS_SEQ.find((b) => b.test(top)).k };
 }
-const weakest = (strata) => strata.length ? Math.min(...strata.map((e) => e.g)) : 0;
+const sinanYear = (bi) => bi >= 0 && D.brazil.circ && D.brazil.circ.North[0][bi] != null;
+function regionAssess(name, bi) {
+  const r = D.brazil.regions[name];
+  return assess(r.s.map((row) => row[bi]), sinanYear(bi) ? D.brazil.circ[name].map((row) => row[bi]) : null);
+}
+const seqsOf = (p, i) => p.s ? p.s.map((row) => row[i]) : [p.g[i]];
+function countryAssess(iso, i) {
+  const p = D.countries[iso], bi = D.brazil.years.indexOf(YEARS[i]);
+  const circ = iso === "BRA" && sinanYear(bi)
+    ? [0, 1, 2, 3].map((k) => Object.keys(D.brazil.regions).some((n) => D.brazil.circ[n][k][bi])) : null;
+  return assess(seqsOf(p, i), circ);
+}
 
-function value(iso, i) {
+// Map color key, or null where there is nothing to show.
+function cellKey(iso, i) {
   const p = D.countries[iso];
   if (!p) return null;
   const g = p.g[i];
-  if (state.mode === "seq") return dengue.has(iso) || g > 0 ? weakest(countryStrata(iso, i)) : null;
+  if (state.mode === "seq") return dengue.has(iso) || g > 0 ? countryAssess(iso, i).k : null;
   const c = caseCount(iso, i).v;
-  return c ? (g / c) * 1e4 : null;
+  return c ? BINS_RATE.find((b) => b.test((g / c) * 1e4)).k : null;
 }
 
 function drawMap() {
@@ -256,11 +270,10 @@ function drawMap() {
   svg.setAttribute("viewBox", G.viewBox.join(" "));
   svg.replaceChildren();
   const i = YEARS.indexOf(state.year);
-  const bins = state.mode === "seq" ? BINS_SEQ : BINS_RATE;
   const add = (el, iso) => {
-    const v = value(iso, i);
+    const k = cellKey(iso, i);
     el.dataset.iso = iso;
-    el.setAttribute("fill", v == null ? color("land-none") : binColor(bins, v));
+    el.setAttribute("fill", color(k || "land-none"));
     if (state.clicked && iso === state.sel) el.classList.add("sel");
     svg.appendChild(el);
   };
@@ -278,12 +291,12 @@ function drawMap() {
   if (bi >= 0) {
     for (const [name, ds] of Object.entries(BR)) {
       const r = D.brazil.regions[name];
-      const v = state.mode === "seq" ? weakest(regionStrata(name, bi)) : (r.c[bi] ? r.g[bi] / r.c[bi] * 1e4 : null);
+      const k = state.mode === "seq" ? regionAssess(name, bi).k : (r.c[bi] ? BINS_RATE.find((b) => b.test(r.g[bi] / r.c[bi] * 1e4)).k : null);
       for (const d of ds) {
         const p = document.createElementNS(NS, "path");
         p.setAttribute("d", d);
         p.dataset.iso = "BRA"; p.dataset.region = name;
-        p.setAttribute("fill", v == null ? color("land-none") : binColor(bins, v));
+        p.setAttribute("fill", color(k || "land-none"));
         p.setAttribute("class", "br-region");
         svg.appendChild(p);
       }
@@ -293,12 +306,12 @@ function drawMap() {
 }
 
 function drawLegend() {
-  const bins = state.mode === "seq" ? BINS_SEQ : BINS_RATE;
-  const none = state.mode === "seq" ? "no dengue data" : "no case data this year";
-  $("leg").innerHTML = (state.mode === "seq" ? `<span>Least-sequenced serotype:</span>` : `<span>Sequences per 10,000 cases:</span>`)
-    + bins.map((b) => `<span><i style="background:${color(b.k)}"></i>${b.label}</span>`).join("")
-    + `<span><i style="background:var(--land-none)"></i>${none}</span>`
-    + (D.brazil.years.includes(state.year) ? `<span>Brazil is shown by macroregion</span>` : "");
+  const sw = (k, label) => `<span><i style="background:${color(k)}"></i>${label}</span>`;
+  $("leg").innerHTML = state.mode === "seq"
+    ? `<span>Sequences in a serotype:</span>` + BINS_SEQ.map((b) => sw(b.k, b.label)).join("")
+      + sw("amb", "59+ in one, other serotypes untyped") + sw("ok", "59+ in every circulating serotype")
+      + sw("land-none", "no dengue data")
+    : `<span>Sequences per 10,000 cases:</span>` + BINS_RATE.map((b) => sw(b.k, b.label)).join("") + sw("land-none", "no case data this year");
 }
 
 function drawSummary() {
@@ -307,15 +320,14 @@ function drawSummary() {
   for (const [iso, p] of Object.entries(D.countries)) {
     g += p.g[i];
     c += caseCount(iso, i).v || 0;
-    const strata = countryStrata(iso, i);
-    if (strata.length && weakest(strata) >= D.target) met++;
+    if (universe.has(iso) && countryAssess(iso, i).top >= D.target) met++;
   }
   $("tSeq").textContent = fmt(g);
   $("tCases").textContent = c ? fmt(c) : "no case data yet";
   const whoYear = WHO && WHO.years.includes(state.year);
   $("tCases").nextElementSibling.textContent = whoYear ? (state.year === YEARS[YEARS.length - 1] ? "reported cases, year to date (WHO)" : "reported cases (WHO)") : "reported cases";
   $("tCases").style.fontSize = c ? "" : "20px";
-  $("tMet").textContent = `${fmt(met)} of ${fmt(dengue.size)}`;
+  $("tMet").textContent = `${fmt(met)} of ${fmt(universe.size)}`;
   const recent = state.year >= YEARS[YEARS.length - 1] - 1;
   const noCases = state.mode === "rate" && state.year > 2024 && !WHO;
   $("note").textContent = noCases ? "Reported-case data end in 2024; switch to Sequences for later years."
@@ -351,7 +363,7 @@ function bars(series, { target, colors, label }) {
     });
     s += `<rect x="${x - 1}" y="${m.t}" width="${bw}" height="${H - m.t - m.b}" fill="transparent"><title>${yr}: ${fmt(tot[j])}</title></rect>`;
   });
-  if (target) s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(target)}" y2="${y(target)}" stroke="var(--target)" stroke-dasharray="4 3" stroke-width="1.2"/><text x="${m.l + 4}" y="${y(target) - 5}" style="fill:var(--ink)">minimum of ${target}</text>`;
+  if (target) s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(target)}" y2="${y(target)}" stroke="var(--target)" stroke-dasharray="4 3" stroke-width="1.2"/>`;
   const js = YEARS.indexOf(state.year);
   [2001, 2005, 2010, 2015, 2020, 2025].forEach((yr) => {
     const j = YEARS.indexOf(yr); if (j < 0 || Math.abs(j - js) < 2) return;
@@ -376,31 +388,40 @@ function drawCard() {
   const cc = caseCount(iso, i);
   let c = cc.v, cLabel = cc.source === "WHO" ? (cc.partial ? `reported cases to ${monthYear(cc.until)} (WHO)` : "reported cases (WHO)") : "reported cases";
   if (iso === "BRA" && !(p.c && p.c[i]) && brazilCases(i)) { c = brazilCases(i); cLabel = YEARS[i] === YEARS[YEARS.length - 1] ? "SINAN probable cases, year to date" : "SINAN probable cases"; }
-  const strata = countryStrata(iso, i), ok = strata.filter((e) => e.g >= D.target).length;
+  const a = countryAssess(iso, i), seqs = seqsOf(p, i);
+  const shown = (p.s ? seqs : []).map((g, k) => ({ k, g })).filter((e) => e.g > 0 || (a.typed && a.strata.some((x) => x.k === e.k)));
+  const chips = shown.length ? `<div class="chips">` + shown.map((e) => `<span><i style="background:${seqColor(e.g)}"></i>${D.serotypes[e.k]} <b>${fmt(e.g)}</b></span>`).join("") + `</div>` : "";
+  const dot = (k) => `<i style="background:${color(k)}"></i>`;
+  const best = p.s ? D.serotypes[seqs.indexOf(a.top)] : "one serotype";
+  const status = g === 0 ? `${dot("zero")}No open sequence this year`
+    : a.typed ? `${dot(a.k)}${a.ok} of ${a.strata.length} circulating serotype${a.strata.length > 1 ? "s" : ""} at the minimum of ${D.target}`
+    : a.top >= D.target ? `${dot("amb")}${best} at ${D.target}+; the other serotypes are untyped`
+    : `${dot(a.k)}No serotype at the minimum of ${D.target}`;
   let h = `<h2>${p.n}, ${state.year}</h2>`
     + `<div class="facts"><div><b>${fmt(g)}</b><span>open sequences</span></div><div><b>${c ? fmt(c) : "–"}</b><span>${c ? cLabel : "no open case data yet"}</span></div></div>`
-    + (strata.length ? `<p class="status">${ok} of ${strata.length} circulating serotype${strata.length > 1 ? "s" : ""} at the minimum of ${D.target}</p><div class="chips">`
-      + strata.map((e) => `<span><i style="background:${binColor(BINS_SEQ, e.g)}"></i>${D.serotypes[e.k]} <b>${fmt(e.g)}</b></span>`).join("") + `</div>`
-      : `<p class="status"><i style="background:var(--zero)"></i>No open sequence this year</p>`);
+    + `<p class="status">${status}</p>` + chips;
   if (iso === "BRA") {
     const bi = D.brazil.years.indexOf(state.year);
     if (bi >= 0) {
       let total = 0, met = 0, grid = "";
       for (const [name, r] of Object.entries(D.brazil.regions)) {
-        const rs = regionStrata(name, bi), on = new Map(rs.map((e) => [e.k, e.g]));
-        grid += `<span class="nm">${name}</span>` + [0, 1, 2, 3].map((k) => on.has(k)
-          ? `<span class="cell" style="background:${binColor(BINS_SEQ, on.get(k))};color:${on.get(k) >= 30 && on.get(k) < 59 ? "#fff" : "var(--ink)"}">${fmt(on.get(k))}</span>`
-          : `<span class="cell off">–</span>`).join("") + `<span class="n">${short(r.c[bi] || 0)}</span>`;
-        total += rs.length; met += rs.filter((e) => e.g >= D.target).length;
+        const ra = regionAssess(name, bi), typed = sinanYear(bi);
+        grid += `<span class="nm">${name}</span>` + [0, 1, 2, 3].map((k) => {
+          const v = r.s[k][bi], on = typed ? D.brazil.circ[name][k][bi] : v > 0;
+          return on ? `<span class="cell" style="background:${seqColor(v)};color:${v >= 30 && v < 59 ? "#fff" : "var(--ink)"}">${fmt(v)}</span>`
+            : `<span class="cell off">${v > 0 ? fmt(v) : "–"}</span>`;
+        }).join("") + `<span class="n">${short(r.c[bi] || 0)}</span>`;
+        if (ra.typed) { total += ra.strata.length; met += ra.ok; }
       }
-      h += `<div class="sec"><h3>Brazil by region and serotype</h3><p class="status">${met} of ${total} region × serotype strata at the minimum of ${D.target}</p>`
+      h += `<div class="sec"><h3>Brazil by region and serotype</h3>` + (sinanYear(bi) ? `<p class="status">${met} of ${total} region × serotype strata at the minimum of ${D.target}</p>` : "")
         + `<div class="mtx"><span></span>${D.serotypes.map((s) => `<span class="hd">${s}</span>`).join("")}<span class="hd n">cases</span>${grid}</div>`
-        + `<p class="footnote">“–” not circulating (${sinanYear(bi) ? "SINAN serotyping" : "from open sequences; SINAN serotyping starts in 2014"}). Cases: SINAN probable.</p></div>`;
+        + `<p class="footnote">${sinanYear(bi) ? "Circulation from SINAN serotyping; grey cells did not circulate." : "SINAN serotyping starts in 2014, so circulation is unknown before then."} Cases: SINAN probable.</p></div>`;
     }
   }
   h += `<div class="sec"><h3>Open sequences per year, by serotype</h3>`
     + bars(p.s || [p.g], { target: D.target, colors: p.s ? SERO_COLORS : ["var(--s3)"], label: "Open sequences per year" })
-    + (p.s ? `<div class="leg">${D.serotypes.map((s, k) => `<span><i style="background:${SERO_COLORS[k]}"></i>${s}</span>`).join("")}</div>` : "") + `</div>`;
+    + (p.s ? `<div class="leg">${D.serotypes.map((s, k) => `<span><i style="background:${SERO_COLORS[k]}"></i>${s}</span>`).join("")}</div>` : "")
+    + `<div class="leg lines"><span><b class="ln"></b>${D.target} per serotype, minimum</span></div></div>`;
   const caseSeries = p.c ? p.c.map((v) => v || 0) : null;
   const extra = YEARS.map((_, j) => (p.c && p.c[j]) ? 0 : (iso === "BRA" ? (brazilCases(j) || 0) : (caseCount(iso, j).v || 0)));
   const extraSource = iso === "BRA" ? "SINAN" : "WHO";
@@ -428,6 +449,7 @@ function bind() {
     render();
   }));
   const tt = $("tt"), map = $("map");
+  const sero = (seqs) => seqs.some((v) => v) ? seqs.map((v, k) => v ? `${D.serotypes[k]}: ${fmt(v)}` : "").filter(Boolean).join("<br>") : "no open sequence";
   map.addEventListener("mousemove", (ev) => {
     const iso = ev.target.dataset && ev.target.dataset.iso;
     const p = iso && D.countries[iso];
@@ -435,12 +457,12 @@ function bind() {
     const i = YEARS.indexOf(state.year);
     const region = ev.target.dataset.region, bi = D.brazil.years.indexOf(state.year);
     if (region && bi >= 0) {
-      const r = D.brazil.regions[region], rs = regionStrata(region, bi);
-      tt.innerHTML = `<b>${region}, Brazil</b>, ${state.year}<br>` + (rs.length ? rs.map((e) => `${D.serotypes[e.k]}: ${fmt(e.g)}`).join("<br>") : "no open sequence") + `<br>${fmt(r.c[bi])} cases`;
+      const r = D.brazil.regions[region], ls = sero(r.s.map((row) => row[bi]));
+      tt.innerHTML = `<b>${region}, Brazil</b>, ${state.year}<br>` + ls + `<br>${fmt(r.c[bi])} cases`;
     } else if (!p) tt.innerHTML = `<b>${G.names[iso] || iso}</b><br>no dengue data`;
     else {
-      const cc = caseCount(iso, i), c = cc.v, strata = countryStrata(iso, i);
-      tt.innerHTML = `<b>${p.n}</b>, ${state.year}<br>` + (strata.length ? strata.map((e) => `${D.serotypes[e.k]}: ${fmt(e.g)}`).join("<br>") : "no open sequence")
+      const cc = caseCount(iso, i), c = cc.v;
+      tt.innerHTML = `<b>${p.n}</b>, ${state.year}<br>` + (p.s ? sero(seqsOf(p, i)) : p.g[i] ? `${fmt(p.g[i])} sequences` : "no open sequence")
         + (c ? `<br>${fmt(c)} cases${cc.source === "WHO" ? (cc.partial ? ` to ${monthYear(cc.until)}, WHO` : ", WHO") : ""}` : "");
     }
     tt.hidden = false;
@@ -474,6 +496,8 @@ Promise.all(["data/panel.json", "data/geo.json", "data/brazil_regions.json"].map
   .then(([d, g, br, who]) => {
     D = d; G = g; BR = br; WHO = who; YEARS = d.years;
     dengue = new Set(Object.entries(d.countries).filter(([, p]) => p.c && p.c.some((v) => v > 0)).map(([k]) => k));
+    // tile: same set in numerator and denominator, countries with a case series or any open sequence
+    universe = new Set(Object.entries(d.countries).filter(([k, p]) => dengue.has(k) || p.g.some((v) => v > 0)).map(([k]) => k));
     $("sourceLine").textContent = `Sequences: Pathoplexus open data, version ${d.dataVersion}, ${d.cutoff}. Cases: OpenDengue V1.3 (to 2024)${who ? ", WHO (2025–2026, accessed " + who.accessed + ")" : ""}, SINAN for Brazil. Draft.`;
     if (who) $("credit").textContent = who.attribution;
     bind(); render();
