@@ -23,7 +23,7 @@ Live page: https://dengue-commons.github.io/coverage/
 
 The map has three states, and serotype circulation never comes from the sequences themselves. Where
 no serotype reached 59, the place falls short whatever circulated and is colored by its
-most-sequenced serotype. Where one did and no case typing is available, the cell is amber: the other
+most-sequenced serotype. Where one did and no case typing is available, the cell is light green: the other
 serotypes cannot be judged. Where case typing exists (Brazil from 2014 on, a serotype circulates in a
 region when SINAN reports at least 10 typed cases of it and at least 1% of the typed cases there),
 each circulating serotype must reach 59.

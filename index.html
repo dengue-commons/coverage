@@ -9,7 +9,7 @@
 :root {
   --bg: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --ink-3: #8a8984;
   --rule: #e4e3df; --grid: #eeede9; --land-none: #e8e7e3; --stroke: #fcfcfb;
-  --zero: #e9897f; --s1: #b7d3f6; --s2: #6da7ec; --s3: #2a78d6; --s4: #0d366b; --ok: #8fb79a; --amb: #e3c27a;
+  --zero: #e9897f; --s1: #b7d3f6; --s2: #6da7ec; --s3: #2a78d6; --s4: #0d366b; --ok: #8fb79a; --amb: #bad89c;
   --d1: #2a78d6; --d2: #eb6834; --d3: #1baf7a; --d4: #eda100;
   --target: #0b0b0b; --panel: #f3f2ee;
   color-scheme: only light;
@@ -142,7 +142,7 @@ footer { margin-top: 32px; padding-top: 14px; border-top: 1px solid var(--rule);
         <p class="paper">Methods, the derivation of the target and the full data are in <span class="ref">Bermann T, et al. Open genomic surveillance of dengue virus against reported and modeled burden, worldwide, 2001–2026. In preparation.</span></p>
       </div>
     </div>
-    <details class="why"><summary>Why 59?</summary><p>59 open sequences give a 95% chance of including a lineage that makes up 5% of one serotype in a season (1 − 0.95<sup>59</sup> ≥ 0.95). It is a floor, not a goal. Each circulating serotype needs its own 59. Where no serotype reached 59 the country falls short whatever circulated, and it is colored by its most-sequenced serotype. Where one did, the floor is met only if every other circulating serotype also has 59, and which serotypes circulated is known from case typing only for Brazil (SINAN, by region); elsewhere the cell stays amber. Brazil is shown by region and other countries as a whole, so the comparison is not like for like. Open sequences are public dengue virus sequences of at least 505 bp in Pathoplexus (about 5% of the genome), the coverage recommended for lineage assignment.</p></details>
+    <details class="why"><summary>Why 59?</summary><p>59 open sequences give a 95% chance of including a lineage that makes up 5% of one serotype in a season (1 − 0.95<sup>59</sup> ≥ 0.95). It is a floor, not a goal. Each circulating serotype needs its own 59. Where no serotype reached 59 the country falls short whatever circulated, and it is colored by its most-sequenced serotype. Where one did, the floor is met only if every other circulating serotype also has 59, and which serotypes circulated is known from case typing only for Brazil (SINAN, by region); elsewhere the cell stays light green. Brazil is shown by region and other countries as a whole, so the comparison is not like for like. Open sequences are public dengue virus sequences of at least 505 bp in Pathoplexus (about 5% of the genome), the coverage recommended for lineage assignment.</p></details>
   </header>
   <div class="bar">
     <div class="year">
@@ -230,7 +230,7 @@ const seqColor = (v) => v >= D.target ? color("ok") : binColor(BINS_SEQ, v);
 
 // Three states, and circulation never comes from the sequences themselves:
 // no serotype at 59 → short whatever circulated, shown by the most-sequenced serotype;
-// a serotype at 59 and no case typing → amber, the other serotypes cannot be judged;
+// a serotype at 59 and no case typing → light green, the other serotypes cannot be judged;
 // case typing (SINAN, Brazil) → each circulating serotype is a stratum, shown by the weakest one.
 function assess(seqs, circ) {
   const top = seqs.length ? Math.max(...seqs) : 0;
